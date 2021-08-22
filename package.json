@@ -1,0 +1,22 @@
+{
+  "name": "s07-todolist-frontend-olivier340",
+  "version": "1.0.0",
+  "description": "On veut mettre en place un petit site de gestion de nos tâches.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "sass": "sass --watch ./assets/sass/main.scss:./assets/css/style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/O-clock-Valkyrie/S07-todolist-frontend-Olivier340.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/O-clock-Valkyrie/S07-todolist-frontend-Olivier340/issues"
+  },
+  "homepage": "https://github.com/O-clock-Valkyrie/S07-todolist-frontend-Olivier340#readme"
+}

@@ -1,12 +1,255 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>TodoList</title>
+
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/bulma.css" />
+    <script
+      src="https://kit.fontawesome.com/b304ee2358.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <section class="section">
+      <div class="container">
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+          <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+              <a class="navbar-item"><h1 class="title is-1">Todo List</h1> </a>
+            </div>
+
+            <div class="navbar-end">
+              <div class="navbar-item">
+                <button class="btn-task-all button is-selected">Toutes</button>
+                <button class="btn-task-copplete button">Complètes</button>
+                <button class="btn-task-none-complete button">Incomplètes</button>
+                <div class="field-body">
+                    <div class="control">
+                      <div class="select">
+                        <select class="select-category-filter">
+                          <option>Toutes les catégories</option>
+                          <option>Courses</option>
+                          <option>O'Clock</option>
+                          <option>Projet professionnel</option>
+                        </select>
+                      </div>
+                    
+                  </div>
+                </div>
+                <button class="btn-archive-list button is-info is-inverted">
+                  Voir les archives
+                </button>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+        <form action="#" method="post" class="border-form">
+          <p
+            class="
+              field
+              is-grouped is-grouped-left
+              control
+              has-icons-left
+              is-expanded
+            "
+          >
+            <input class="task-input" type="text" placeholder="Créer une tache" />
+            <span class="icon is-small is-left">
+              <i class="fas fa-tasks"></i>
+            </span>
+          </p>
+          <div class="field is-grouped is-grouped-right">
+            <div class="field is-narrow">
+              <div class="control">
+                <div class="select" name="category">
+                  <select class="select-category">
+                    <option>Choisir une catégorie</option>
+                    <option>Courses</option>
+                    <option>O'Clock</option>
+                    <option>Projet professionnel</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="control">
+              <button type="submit" class="button is-info">
+                <span class="icon">
+                  <i class="fas fa-plus"></i>
+                </span>
+                <span>Ajouter</span>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+    <ul>
+      <li>
+        <section class="section">
+          <div class="container">
+            <div class="border">
+              <span class="task-name">Acheter du pain</span>
+              <div class="is-right">
+                <button class="button is-link">
+                  <span class="icon is-large">
+                    <i class="fas fa-check-square"></i>
+                  </span>
+                </button>
+                <button class="button is-link">
+                  <span class="icon is-large">
+                    <i class="fas fa-pen-square"></i>
+                  </span>
+                </button>
+                <button class="button is-link">
+                  <span class="icon is-large">
+                    <i class="fas fa-archive"></i>
+                  </span>
+                </button>
+              </div>
+            </div>
+
+            <progress class="progress is-primary is-small" value="20" max="100">
+              20%
+            </progress>
+          </div>
+        </section>
+      </li>
+
+      <li>
+        <section class="section">
+          <div class="container">
+            <div class="border">
+              <p class="texte">Réviser les objets en PHP</p>
+              <div class="is-right">
+                <button class="button is-link">
+                  <span class="icon is-large">
+                    <i class="fas fa-check-square"></i>
+                  </span>
+                </button>
+                <button class="button is-link">
+                  <span class="icon is-large ">
+                    <i class="fas fa-pen-square "></i>
+                  </span>
+                </button>
+                <button class="button is-link">
+                  <span class="icon is-large">
+                    <i class="fas fa-archive"></i>
+                  </span>
+                </button>
+                
+              </div>
+              
+            </div>
+            <progress class="progress is-primary is-small" value="30" max="100">
+              30%
+            </progress>
+          </div>
+        </section>
+      </li>
+      <li>
+        <section class="section">
+          <div class="container">
+            <div class="border">
+              <p class="texte">Revoir les événements en JS</p>
+              <div class="is-right is-mobile">
+                <button class="button is-link">
+                  <span class="icon is-large is-chosen">
+                    <i class="fas fa-step-backward icon-color"></i>
+                  </span>
+                </button>
+                <button class="button is-link">
+                  <span class="icon is-large to-modify">
+                    <i class="fas fa-pen-square icon-color"></i>
+                  </span>
+                </button>
+                <button class="button is-link">
+                  <span class="icon is-large to-delete">
+                    <i class="fas fa-archive icon-color for-deleting"></i>
+                  </span>
+                </button>
+              </div>
+            </div>
+            <progress class="progress is-primary is-small" value="60" max="100">
+              60%
+            </progress>
+          </div>
+        </section>
+      </li>
+      <li>
+        <section class="section">
+          <div class="container">
+            <div class="border">
+              <div class="is-left">
+                <div class="texte archived">Exemple de tâche archivée</div>
+              </div>
+              <div class="is-right">
+                <button class="button is-link">
+                  <span class="icon is-large is-chosen">
+                    <i class="fas fa-check-square icon-color"></i>
+                  </span>
+                </button>
+                <button class="button is-link">
+                  <span class="icon is-large to-modify">
+                    <i class="fas fa-pen-square icon-color"></i>
+                  </span>
+                </button>
+                <button class="button is-link">
+                  <span class="icon is-large to-delete">
+                    <i class="fas fa-archive icon-color for-deleting"></i>
+                  </span>
+                </button>
+              </div>
+            </div>
+            <progress class="progress is-primary is-small" value="10" max="100">
+              10%
+            </progress>
+          </div>
+        </section>
+      </li>
+      <li>
+        <section class="section">
+          <div class="container">
+            <div class="border">
+              <p class="texte">Apprendre à apprendre</p>
+              <div class="is-right">
+                <button class="button is-link">
+                  <span class="icon is-large">
+                    <i class="fas fa-reply"></i>
+                  </span>
+                </button>
+                <button class="button is-link">
+                  <span class="icon is-large">
+                    <i class="fas fa-archive"></i>
+                  </span>
+                </button>
+              </div>
+            </div>
+            <progress class="progress is-primary is-small" value="40" max="100">
+              40%
+            </progress>
+          </div>
+        </section>
+      </li>
+    </ul>
+
+    <script type="text/javascript" src="./assets/js/app.js"></script>
+  </body>
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p>
+        <strong>TodoList</strong> by
+        <a href="https://500px.com/p/alcoream?view=photos">Olivier GANDAIS</a>
+      </p>
+    </div>
+  </footer>
 </html>
