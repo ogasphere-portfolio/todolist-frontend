@@ -2,62 +2,76 @@ const app = {
    
     init: function () {
       console.log('app.init');
-  
-      // Je cible l'élément qui m'interesse
-      const formElement = document.querySelector('#game .form');
-      formElement.addEventListener('submit', app.handleFormSubmit);
-  
-      const statBtnElement = document.querySelector('#stats');
-      statBtnElement.addEventListener('click', stats.handleClickStats);
-  
-      const startFormElement = document.querySelector('#beforegame .form');
-      startFormElement.addEventListener('submit', app.handleSubmitStartForm);
-  
-      // Je cible toutes les cellules (div qui ont la classe cell)
-      const allCells = document.querySelectorAll('div.cell');
-      // Je boucle sur chaque cellule
-      // for (let index = 0; index < allCells.length; index++) {
-      for (const cellElement of allCells) {
-  
-        cellElement.addEventListener('click', app.handleClickOnCell);
-      }
-  
-      const selectElement = document.querySelector('.select-category-filter');
-      selectElement.addEventListener('change', app.handleChangeTheme);
-  
+      
+      // handle Form submit
+      const taskAdd = document.querySelector('.task-form');
+      taskAdd.addEventListener('submit', app.handleFormSubmit);
+      
+      // Handle buttons click
+      
+      let taskCheck = document.querySelector('.btn-task-check');
+      taskCheck.addEventListener('click', app.handleClickTaskCheck);
+      const taskEdit = document.querySelector('.btn-task-edit');
+      taskEdit.addEventListener('click', app.handleClickTaskEdit);
+      const taskUnCheck = document.querySelector('.btn-task-uncheck');
+      taskUnCheck.addEventListener('click', app.handleClickTaskUnCheck);
+      const taskDelete = document.querySelector('.btn-task-delete');
+      taskDelete.addEventListener('click', app.handleClickTaskDelete);
+      const taskArchive = document.querySelector('.btn-task-archive');
+      taskArchive.addEventListener('click', app.handleClickTaskArchive);
+      const taskArchiveOff = document.querySelector('.btn-task-archive-off');
+      taskArchiveOff.addEventListener('click', app.handleClickTaskArchiveOff);
+     
+      // Handle select Category filter change
+      const selectCategoryFilter = document.querySelector('#select-category-filter');
+      selectCategoryFilter.addEventListener('change', app.handleChangeCategoryFilter);
+
+      
     },
 
     handleFormSubmit: function (event) {
   
-      // On demande à notre evenement de s'arreter !
-      // La page ne sera donc pas rechargée
       event.preventDefault();
   
-      // Mon evenement contient plein d'informations le concernant
-      // Il peut par exemple me donner l'information de l'élément sur lequel
-      // l'écouteur d'evenement à été attaché
-      // console.log(event); // Mon evenement SubmitEvent
-      // console.log(event.currentTarget); // Mon formulaire
-      // console.log(event.currentTarget.querySelector('input')); // L'input de mon formulaire
+      // Target Input
+      const inputElement = event.currentTarget.querySelector('input')
   
-      // Je cible l'input
-      const inputElement = document.querySelector('#cellToHit');
-  
-      // Je récupere la valeur saisie dans mon input
+      // Get Input Value
       const inputValue = inputElement.value;
   
       console.log(inputValue);
   
       
     },
-    handleClickOnCell: function (event) {
-  
-      const cellElement = event.currentTarget;
-  
-      const coords = cellElement.dataset.cellName;
-  
+   
+    handleClickTaskCheck: function (event) {
+       console.log('check')
       
+    },
+    handleClickTaskEdit: function (event) {
+      console.log('edit')
       
+    },
+    handleClickTaskUnCheck: function (event) {
+      console.log('uncheck')
+      
+    },
+    handleClickTaskDelete: function (event) {
+      console.log('delete')
+      
+    },
+    handleClickTaskArchive: function (event) {
+       
+      console.log('archive')
+    },
+    handleClickTaskArchiveOff: function (event) {
+       
+      console.log('archive decochée')
+    },
+
+    handleChangeCategoryFilter: function (event) {
+      console.log('changeselect')
+     
     },
     
   };

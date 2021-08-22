@@ -7,7 +7,7 @@
     <title>TodoList</title>
 
     <link rel="stylesheet" href="./assets/css/style.css" />
-    <link rel="stylesheet" href="./assets/css/bulma.css" />
+   
     <script
       src="https://kit.fontawesome.com/b304ee2358.js"
       crossorigin="anonymous"
@@ -31,7 +31,7 @@
                 <div class="field-body">
                     <div class="control">
                       <div class="select">
-                        <select class="select-category-filter">
+                        <select id="select-category-filter">
                           <option>Toutes les catégories</option>
                           <option>Courses</option>
                           <option>O'Clock</option>
@@ -52,7 +52,7 @@
     </section>
     <section class="section">
       <div class="container">
-        <form action="#" method="post" class="border-form">
+        <form action="#" method="post" class="task-form border-form">
           <p
             class="
               field
@@ -82,7 +82,7 @@
             </div>
 
             <div class="control">
-              <button type="submit" class="button is-info">
+              <button type="submit" class="btn-task-add button is-info">
                 <span class="icon">
                   <i class="fas fa-plus"></i>
                 </span>
@@ -100,17 +100,17 @@
             <div class="border">
               <span class="task-name">Acheter du pain</span>
               <div class="is-right">
-                <button class="button is-link">
+                <button class="btn-task-check button is-link">
                   <span class="icon is-large">
                     <i class="fas fa-check-square"></i>
                   </span>
                 </button>
-                <button class="button is-link">
+                <button class="btn-task-edit button is-link">
                   <span class="icon is-large">
                     <i class="fas fa-pen-square"></i>
                   </span>
                 </button>
-                <button class="button is-link">
+                <button class="btn-task-archive button is-link">
                   <span class="icon is-large">
                     <i class="fas fa-archive"></i>
                   </span>
@@ -131,17 +131,17 @@
             <div class="border">
               <p class="texte">Réviser les objets en PHP</p>
               <div class="is-right">
-                <button class="button is-link">
+                <button class="btn-task-check button is-link">
                   <span class="icon is-large">
                     <i class="fas fa-check-square"></i>
                   </span>
                 </button>
-                <button class="button is-link">
+                <button class="btn-task-edit button is-link">
                   <span class="icon is-large ">
                     <i class="fas fa-pen-square "></i>
                   </span>
                 </button>
-                <button class="button is-link">
+                <button class="btn-task-archive button is-link">
                   <span class="icon is-large">
                     <i class="fas fa-archive"></i>
                   </span>
@@ -161,20 +161,20 @@
           <div class="container">
             <div class="border">
               <p class="texte">Revoir les événements en JS</p>
-              <div class="is-right is-mobile">
-                <button class="button is-link">
-                  <span class="icon is-large is-chosen">
-                    <i class="fas fa-step-backward icon-color"></i>
+              <div class="is-right">
+                <button class="btn-task-uncheck button is-link">
+                  <span class="icon is-large">
+                    <i class="fas fa-step-backward"></i>
                   </span>
                 </button>
-                <button class="button is-link">
-                  <span class="icon is-large to-modify">
-                    <i class="fas fa-pen-square icon-color"></i>
+                <button class="btn-task-edit button is-link">
+                  <span class="icon is-large">
+                    <i class="fas fa-pen-square"></i>
                   </span>
                 </button>
-                <button class="button is-link">
-                  <span class="icon is-large to-delete">
-                    <i class="fas fa-archive icon-color for-deleting"></i>
+                <button class="btn-task-archive button is-link">
+                  <span class="icon is-large">
+                    <i class="fas fa-archive"></i>
                   </span>
                 </button>
               </div>
@@ -190,22 +190,22 @@
           <div class="container">
             <div class="border">
               <div class="is-left">
-                <div class="texte archived">Exemple de tâche archivée</div>
+                <div class="texte archived">Apprendre à apprendre</div>
               </div>
               <div class="is-right">
-                <button class="button is-link">
-                  <span class="icon is-large is-chosen">
-                    <i class="fas fa-check-square icon-color"></i>
+                <button class="btn-task-check button is-link">
+                  <span class="icon is-large">
+                    <i class="fas fa-check-square"></i>
                   </span>
                 </button>
                 <button class="button is-link">
-                  <span class="icon is-large to-modify">
-                    <i class="fas fa-pen-square icon-color"></i>
+                  <span class="icon is-large ">
+                    <i class="fas fa-pen-square"></i>
                   </span>
                 </button>
-                <button class="button is-link">
-                  <span class="icon is-large to-delete">
-                    <i class="fas fa-archive icon-color for-deleting"></i>
+                <button class="btn-task-archive button is-link">
+                  <span class="icon is-large ">
+                    <i class="fas fa-archive"></i>
                   </span>
                 </button>
               </div>
@@ -217,19 +217,19 @@
         </section>
       </li>
       <li>
-        <section class="section">
+        <section class="section task-archive">
           <div class="container">
             <div class="border">
-              <p class="texte">Apprendre à apprendre</p>
+              <p class="texte">Exemple de tâche archivée</p>
               <div class="is-right">
-                <button class="button is-link">
+                <button class="btn-task-archive-off button is-link">
                   <span class="icon is-large">
                     <i class="fas fa-reply"></i>
                   </span>
                 </button>
-                <button class="button is-link">
+                <button class="btn-task-delete button is-link">
                   <span class="icon is-large">
-                    <i class="fas fa-archive"></i>
+                    <i class="fas fa-trash-alt"></i>
                   </span>
                 </button>
               </div>
