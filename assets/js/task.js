@@ -1,9 +1,73 @@
 const task = {
+
+
+    init : function(taskElement){
+        /* *****************************
+            Gestion event label titre 
+        ********************************/
+        // je me positionne sur mon élément Task pour faire des recherches
+        // uniquement dans les enfants de l'élément
+        const titleLabel = taskElement.querySelector(".task__title-label");
+
+        // je veux écouter l'évènement click sur le titre (<P>)
+        // afin de changer la classe CSS du parent en task--edit
+        // comme ça le titre disparait, et l'input apparait
+        titleLabel.addEventListener('click', task.handlerClickTitle);
+
+        /* *****************************
+            Gestion event Input titre
+        *******************************/
+        const titleInput = taskElement.querySelector('.task__title-field');
+        
+        // je met un evenement sur un title
+        titleInput.addEventListener('keydown', task.handlerKeydownTitleInput);
+        // je veux que l'on réagisse aussi sur la perte du focus
+        //https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event
+        titleInput.addEventListener('blur', task.handlerInputBlur);
+
+         /* *****************************
+            Gestion event Boutons
+        *******************************/
+        const buttonValidate = taskElement.querySelector('.task__button--validate');
+        buttonValidate.addEventListener('click', task.handleCompleteTask);
+
+    },
+
+
     /*********************************************************/
     /*
     /*  Méthodes handler
     /*
     /*********************************************************/
+    /**
+     * Gestion du click sur le bouton validate
+     * @param {ClickEvent} event infor sur l'event
+     */
+    handleCompleteTask : function(event){
+        console.log('click');
+        // je récupère le bouton sur lequel on a cliqué
+        const buttonValidate = event.currentTarget;
+        //console.log(buttonValidate);
+
+        // je dois me posisitionner sur l'element task parent
+        const parentElement = buttonValidate.closest('.tasks .task');
+
+        // je dois enlever la classe todo
+        //je dois mettre la classe complete
+        // Merci Lucas L, en une seule ligne
+        parentElement.classList.replace('task--todo', 'task--complete');
+
+         // Merci Alexandre R pour l'UX
+        // je cherche la barre de progression
+        const progressBar = parentElement.querySelector('.progress-bar__level');
+        // je change la taille de la barre de progression
+        // pour la mettre à 100%, donc complete
+        progressBar.style.width="100%";
+
+    },
+
+
+   
     /**
      * Gestion du click title, pour passer en mode edition/modification
      * @param {Event} event info event
@@ -33,6 +97,10 @@ const task = {
         // met le curseur au bout du texte
         inputElement.selectionStart = inputElement.value.length;
     },
+
+
+ 
+
     /**
      * Gestion du keydown sur le input title
      * @param {KeyDownEvent} event infos event

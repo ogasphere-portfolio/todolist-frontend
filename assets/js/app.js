@@ -1,10 +1,13 @@
 const app = {
     init: function(){
+        console.log("App Init !");
         
-        // je demande à taskList de faire tout les addEventListener
-        // sur tout les éléments de la liste
-        taskList.bindAllTaskEvent();
+        // je "créer" une nouvelle taskList
+        taskList.init();
+
+        // Je crée un nouveau TaskForm
         newTaskForm.init();
+
     },
 }
 

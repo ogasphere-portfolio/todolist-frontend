@@ -1,32 +1,23 @@
 const taskList = {
+
+
+    init: function(){
+
+        // je cherche toutes les task pour créer un "objet" par task
+        const allTaskElement = document.querySelectorAll('.tasks .task');
+        for (const taskElement of allTaskElement) {
+            // init correspond à la création de l'objet
+            // je lui donne l'élement HTML pour qu'il fasse des recherches ciblées
+            task.init(taskElement);
+        }
+    },
+
+
     /**
      * Gestion de tout les addEventListener de la liste
      */
     bindAllTaskEvent: function () {
-        // je veux écouter l'évènement click sur le titre (<P>)
-        // afin de changer la classe CSS du parent en task--edit
-        // comme ça le titre disparait, et l'input apparait
-
-        const allTitleLabel = document.querySelectorAll(".task__title-field");
-        // je récupère un tableau, je vais donc le parcourir
-        // pour pouvoir mettre un écouteur à chaque title
-        for (const label of allTitleLabel) {
-            // je met un evenement sur un title
-            console.log(label);
-            label.addEventListener("click", task.handlerClickTitle);
-        }
-
-        const allTitleInput = document.querySelectorAll(".task__title-field");
-        // je récupère un tableau, je vais donc le parcourir
-        // pour pouvoir mettre un écouteur à chaque input
-        for (const input of allTitleInput) {
-            // je met un evenement sur un title
-            input.addEventListener("keydown", task.handlerKeydownTitleInput);
-            // je veux que l'on réagisse aussi sur la perte du focus
-            //https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event
-            input.addEventListener("blur", task.handlerInputBlur);
-        }
-
+        
         /* if (document.addEventListener) {
                 document.addEventListener("click", handleClick, false);
             } else if (document.attachEvent) {
