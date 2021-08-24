@@ -36,12 +36,12 @@
           <button class="filters__choice button">Incomplètes</button>
         </div>
         <div class="filters__task filters__task--category select is-small">
-          <select class="filters__choice">
+        <!--   <select class="filters__choice">
             <option>Toutes les catégories</option>
             <option>Courses</option>
             <option>O'Clock</option>
             <option>Projet Professionnel</option>
-          </select>
+          </select> -->
         </div>
         <div class="filters__task filters__task--archived">
           <a class="filters__choice" href="#">Voir les archives</a>
@@ -51,8 +51,8 @@
     <main>
       <div class="task task--add">
         <form method="POST">
-          <div class="task__content">
-            <div class="task__title">
+          <div class="task__content"> 
+            <div class="task__title"></div>
               <p class="task__title-label"></p>
               <input class="task__title-field input" type="text" placeholder="Titre de la tâche" name="title" />
             </div>
@@ -278,7 +278,7 @@
             <div class="task__buttons">
               <button class="task__button task__button--incomplete button is-success is-small">
                 <span class="icon is-small">
-                  <i class="fa fa-step-backward"></i>
+                  <i class="fa fa-step-backward"categoriesList></i>
                 </span>
               </button>
               <button class="task__button task__button--desarchive button is-success is-small">
@@ -369,6 +369,9 @@
   <script type="text/javascript" src="assets/js/taskList.js"></script>
   <script type="text/javascript" src="assets/js/newTaskForm.js"></script>
   <script type="text/javascript" src="assets/js/task.js"></script>
+  <script type="text/javascript" src="assets/js/categoriesList.js"></script>
+
+  
 </body>
 <footer class="footer">
   <div class="content has-text-centered">

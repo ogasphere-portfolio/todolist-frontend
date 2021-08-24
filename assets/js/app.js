@@ -8,6 +8,8 @@ const app = {
         // Je crée un nouveau TaskForm
         newTaskForm.init();
 
+        categoriesList.init();
+
     },
 }
 
