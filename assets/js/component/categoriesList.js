@@ -54,7 +54,6 @@ const categoriesList = {
 
             // je parcours un tableau d'objet (responseJson.Ratings)
             for (const category of responseJson) {
-                
                 // Je crée l'option pour le menu et le formulaire
                 const option = document.createElement('option');
                 option.innerText =category.name;
@@ -66,12 +65,12 @@ const categoriesList = {
                 optionForm.innerText =category.name;
                 selectForm.appendChild(optionForm);
             }
-
-            
-            
+           
         });
 
            
     }
 }
+
+
 

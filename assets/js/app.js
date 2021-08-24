@@ -10,6 +10,8 @@ const app = {
         newTaskForm.init();
 
         categoriesList.init();
+        
+        //majTaskList.init();
 
     },
 }

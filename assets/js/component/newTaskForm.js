@@ -50,6 +50,7 @@ const newTaskForm = {
 
             const titleInput = documentFragment.querySelector('.task__title-field');
             titleInput.innerText = newTitle;
+            titleInput.value = newTitle;
 
             const category = documentFragment.querySelector('.task__category p');
             category.innerText = newCategory;
