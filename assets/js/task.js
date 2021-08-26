@@ -73,11 +73,11 @@ const task = {
      * @param {Event} event info event
      */
      handlerClickTitle : function(event){        
-        console.log("handler Click Title");
+       //console.log("handler Click Title");
 
         // je récupère l'élément sur lequel le click a été fait
         const titleElement = event.currentTarget;
-         console.log(titleElement);
+        // console.log(titleElement);
 
         // on cherche le parent 'div' qui porte la classe 'task'
         // en vue de lui ajouter la classe 'task--edit'
@@ -86,10 +86,10 @@ const task = {
         const parentElement = titleElement.closest('.tasks .task');
         // genre body > section > ul > li : le closest de li ça sera bien ul
 
-        console.log(parentElement);
+        //console.log(parentElement);
 
         // on ajoute la classe pour passer en mode modification
-        titleElement.classList.add('task--edit');
+        parentElement.classList.add('task--edit');
 
         const inputElement = parentElement.querySelector('.task__title-field');
         //inputElement.value = inputElement.value;
@@ -110,7 +110,6 @@ const task = {
         // console.log(event.keyCode);
         // je veux réagir sur la touche Enter qui a pour code 13
         // que cela soit celle du pavé numérique ou pas
-        
         if (event.keyCode === 13)
         {
             const titleInputElement = event.currentTarget;

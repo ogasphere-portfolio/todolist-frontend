@@ -3,6 +3,7 @@ const taskList = {
 
     init: function(){
 
+        taskList.LoadFromApi();
         // je cherche toutes les task pour créer un "objet" par task
         const allTaskElement = document.querySelectorAll('.tasks .task');
         for (const taskElement of allTaskElement) {
@@ -12,6 +13,74 @@ const taskList = {
         }
     },
 
+    LoadFromApi: function () {
+        const config = {
+            method: 'GET',
+            mode: 'cors',
+            cache: 'no-cache'
+          };
+        //TODO faire le fetch
+        fetch('https://benoclock.github.io/S07-todolist/tasks.json', config)
+            .then(function(response) {return response.json();})
+            // Ce résultat au format JS est récupéré en argument ici-même
+            .then(function(jsonDataFromAPI) {
+                
+                for (const jsonTaskFromAPI of jsonDataFromAPI) {
+                        
+                    //TODO clone template
+                    // je récupère mon template
+                    const taskTemplate = document.querySelector('#empty-task');
+                    // on remarque que le DIV que l'on veut dupliquer
+                    // n'est pas directement disponible : #document-fragment
+                    // console.log(taskTemplate);
+                    const documentFragment = taskTemplate.content.cloneNode(true);
+
+                    //TODO avec les donnée de l'API, modifier le clone
+                    /* exemple de donnée de l'API
+                    {
+                        "id": 1,
+                        "title": "Passer les tests du chemin vers O'clock",
+                        "completion": 100,
+                        "category": {
+                            "id": 1,
+                            "name": "Chemin vers O'clock",
+                            "status": 1
+                        },
+                        "status": 2
+                        }
+                    */
+                    const titleFromAPI = jsonTaskFromAPI.title;
+                    const categoryFromAPI = jsonTaskFromAPI.category.name;
+
+                    const titleLabel = documentFragment.querySelector('.task__title-label');
+                    titleLabel.textContent = titleFromAPI;
+
+                    const titleInput = documentFragment.querySelector('.task__title-field');
+                    titleInput.textContent = titleFromAPI;
+                    titleInput.value = titleFromAPI;
+
+                    const category = documentFragment.querySelector('.task__category p');
+                    category.innerText = categoryFromAPI;
+                    // avec dataset, j'accède au attribut commençant par "data-"
+                    // je met le nom du data directement après
+                    const divTask = documentFragment.querySelector('.task');
+                    divTask.dataset.category = categoryFromAPI;
+                    
+                    // ne pas oublier la barre de progression // merci mélanie
+                    const newProgress = jsonTaskFromAPI.completion;
+                    const progress = documentFragment.querySelector('.progress-bar__level');
+                    progress.setAttribute('style', 'width:' + newProgress + '%');
+
+                    //TODO appendChild du clone
+                    const taskList = document.querySelector('.tasks');
+                    // attention à ne pas prendre le documentFragment mais bien la DIV
+                    taskList.appendChild(divTask);
+
+                    //TODO init des évenèments (task.init)
+                    task.init(divTask);
+                }
+            });
+    },
 
     /**
      * Gestion de tout les addEventListener de la liste
@@ -25,29 +94,7 @@ const taskList = {
             } */
 
         
-        // Handle buttons click
-
-        var tasksCheck = document.querySelector(".task__button--validate");
-        Array.from(tasksCheck).forEach(function (taskCheck) {
-        taskCheck.addEventListener("click", task.handleClickTaskCheck);
-        });
-        //taskCheck.addEventListener("click", task.handleClickTaskCheck);
-
-        const taskEdit = document.querySelector(".task__button--modify");
-        taskEdit.addEventListener("click", task.handleClickTaskEdit);
-
-        const taskArchive = document.querySelector(".task__button--archive");
-        taskArchive.addEventListener("click", task.handleClickTaskArchive);
-
-        const taskUnCheck = document.querySelector(".task__button--incomplete");
-        taskUnCheck.addEventListener("click", task.handleClickTaskUnCheck);
-
-        const taskDelete = document.querySelector(".task__button--delete");
-        taskDelete.addEventListener("click", task.handleClickTaskDelete);
-
-        const taskArchiveOff = document.querySelector(".task__button--desarchive");
-        taskArchiveOff.addEventListener("click", task.handleClickTaskArchiveOff);
-
+      
         // Handle select Category filter change
         const selectCategoryFilter = document.querySelector(".filters__choice");
         selectCategoryFilter.addEventListener(
@@ -56,3 +103,6 @@ const taskList = {
         );
     },
 };
+
+document.addEventListener("DOMContentLoaded", taskList.init);
+

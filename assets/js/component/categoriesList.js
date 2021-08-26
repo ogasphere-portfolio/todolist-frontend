@@ -35,7 +35,8 @@ const categoriesList = {
         
         .then(function(responseJson){
            
-                      
+            
+                    
             // je récupère le parent du select du menu
             const selectCategories = document.querySelector('.filters__task--category')
             // je crée l'element Html select
@@ -43,13 +44,14 @@ const categoriesList = {
             // et je l'integre au DOM
             selectCategories.appendChild(select).classList.add('filters__choice');
 
-             // je récupère le parent du select du formulaire
-             const selectCategoriesForm = document.querySelector('#selectCategoryForm')
-             console.log(selectCategoriesForm);
-             // je crée l'element Html select
-             const selectForm = document.createElement('select');
+
+
+            // je récupère le parent du select du formulaire
+            const selectCategoriesForm = document.querySelector('#selectCategoryForm')
+            // je crée l'element Html select
+            const selectForm = document.createElement('select');
               // et je l'integre au DOM
-             selectCategoriesForm.appendChild(selectForm);
+            selectCategoriesForm.appendChild(selectForm);
            
 
             // je parcours un tableau d'objet (responseJson.Ratings)
@@ -57,12 +59,15 @@ const categoriesList = {
                 // Je crée l'option pour le menu et le formulaire
                 const option = document.createElement('option');
                 option.innerText =category.name;
+                option.value = category.id;
+
                 // je rajoute l'option au DOM 
                 select.appendChild(option);
                
                 // on fait pareil pour le select du formulaire
                 const optionForm = document.createElement('option');
                 optionForm.innerText =category.name;
+                optionForm.value = category.id;
                 selectForm.appendChild(optionForm);
             }
            

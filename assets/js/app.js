@@ -11,7 +11,7 @@ const app = {
 
         categoriesList.init();
         
-        //majTaskList.init();
+        majTaskList.init();
 
     },
 }

@@ -64,9 +64,9 @@ const newTaskForm = {
             // console.log(divTask);
 
             //TODO je dois insérer mon nouvel élémént dans la liste des tasks
-            const taskList = document.querySelector('.tasks');
+            const taskListElement = document.querySelector('.tasks');
             // attention à ne pas prendre le documentFragment mais bien la DIV
-            taskList.appendChild(divTask);
+            taskListElement.appendChild(divTask);
                         
         }
         else {

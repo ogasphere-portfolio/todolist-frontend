@@ -5,17 +5,6 @@ const majTaskList = {
     method: "GET",
     mode: "cors",
     cache: "no-cache",
-
-    // Si on veut envoyer des données avec la requête
-    // généralement dans le cadre de POST, PUT, PATCH
-    // => décommenter et remplacer data par le tableau de données
-    // , body : JSON.stringify(data)
-    /*
-        data = {
-            key1 : value1,
-            key2 : value2
-        }
-        */
     },
 
   init: function () {
@@ -64,7 +53,7 @@ const majTaskList = {
   },
 };
 
-const taskTemplate = document.querySelector("#empty-task");
+/* const taskTemplate = document.querySelector("#empty-task");
 const documentFragment = taskTemplate.content.cloneNode(true);
 
 const inputTitle = document.querySelector(".task--add .task__title-field");
@@ -86,8 +75,8 @@ const category = documentFragment.querySelector(".task__category p");
 category.innerText = newCategory;
 
 const divTask = documentFragment.querySelector(".task");
-divTask.dataset.category = newCategory;
+divTask.dataset.category = newCategory; */
 
 //TODO je dois insérer mon nouvel élémént dans la liste des tasks
-const taskList = document.querySelector(".tasks");
-taskList.appendChild(divTask);
+//const taskList = document.querySelector(".tasks");
+//taskList.appendChild(divTask);
