@@ -54,7 +54,7 @@ const task = {
         // je dois me posisitionner sur l'element task parent
         const parentElement = buttonValidate.closest('.tasks .task');
         const id = parseInt(parentElement.dataset.idTask);
-console.log(id);
+
         // je dois enlever la classe todo
         //je dois mettre la classe complete
         // Merci Lucas L, en une seule ligne

@@ -73,14 +73,7 @@ const newTaskForm = {
                 "category_id" : idNewCategory ,         
     
             };
-        }
-        else {
-            alert('Met ton navigateur à jour !');
-        }
-
-
-       
-                    
+                      
         const httpHeaders = new Headers();
         httpHeaders.append("Content-Type", "application/json");
 
@@ -105,6 +98,10 @@ const newTaskForm = {
                 }
             }
         )
-
+        }
+        else {
+            alert('Met ton navigateur à jour !');
+            
+        }
     }
 }
