@@ -1,5 +1,7 @@
 const newTaskForm = {
-   
+
+    data : "",
+    
     init: function(){
        
         // handle Form submit
@@ -35,13 +37,9 @@ const newTaskForm = {
             const selectCategory = document.querySelector('.task--add .select select');
 
             const newTitle = inputTitle.value;
-            // on récupère le contenu texte de l'option
-            // const newCategory = selectCategory.textContent;
-            // on préfère ici récupérer la valeu en pensant à des données qui viendrais de la BDD
-            // dans notre cas ceci fonctionne car il n'y a pas de "value" sur les éléments option
-            const newCategory = selectCategory.value;
+            const idNewCategory = selectCategory.value;
             
-
+            console.log(idNewCategory);
             // console.log('title : '+ newTitle + " / category : "+newCategory);
             //WARNING 
             //TODO je dois inserer les données saisie dans mon nouveau élément
@@ -53,12 +51,12 @@ const newTaskForm = {
             titleInput.value = newTitle;
 
             const category = documentFragment.querySelector('.task__category p');
-            category.innerText = newCategory;
+            category.innerText = idNewCategory;
 
             // avec dataset, j'accède au attribut commençant par "data-"
             // je met le nom du data directement après
             const divTask = documentFragment.querySelector('.task');
-            divTask.dataset.category = newCategory;
+            divTask.dataset.category = idNewCategory;
             
             // on finit les mises à jours, on vérifie
             // console.log(divTask);
@@ -67,10 +65,46 @@ const newTaskForm = {
             const taskListElement = document.querySelector('.tasks');
             // attention à ne pas prendre le documentFragment mais bien la DIV
             taskListElement.appendChild(divTask);
-                        
+            
+            data = {
+                "title" : newTitle,
+                "completion" : 0,
+                "status" : 1,
+                "category_id" : idNewCategory ,         
+    
+            };
         }
         else {
             alert('Met ton navigateur à jour !');
         }
+
+
+       
+                    
+        const httpHeaders = new Headers();
+        httpHeaders.append("Content-Type", "application/json");
+
+        const fetchOptions = {
+            method: 'POST',
+            mode: 'cors',
+            cache: 'no-cache',
+            headers: httpHeaders,
+            body: JSON.stringify(data)
+        };
+
+        fetch(app.apiRootUrl + "tasks", fetchOptions)
+        .then(
+            function(response) {
+                // console.log(response);
+                // Si HTTP status code à 201 => OK
+                if (response.status == 201) {
+                    alert('ajout effectué');
+                }
+                else {
+                    alert('L\'ajout a échoué '+response.status);
+                }
+            }
+        )
+
     }
 }

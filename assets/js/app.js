@@ -1,5 +1,7 @@
 const app = {
 
+    apiRootUrl: 'http://localhost:8080/',
+
     init: function(){
         console.log("App Ini!");
         
@@ -9,9 +11,13 @@ const app = {
         // Je crée un nouveau TaskForm
         newTaskForm.init();
 
+        // Je récupere les catégories pour les deux selecteurs
         categoriesList.init();
-        
+
+        // Je mets à jour la liste des taches
         majTaskList.init();
+
+        filter.init()
 
     },
 }

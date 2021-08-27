@@ -1,6 +1,6 @@
 const majTaskList = {
  
-    baseUri: "http://localhost:8080/",
+   
     fetchOptions: {
     method: "GET",
     mode: "cors",
@@ -12,14 +12,14 @@ const majTaskList = {
   },
 
   loadTaskFromAPI: function () {
-    fetch(majTaskList.baseUri + "tasks/", majTaskList.fetchOptions)
+    fetch(app.apiRootUrl + "tasks/", majTaskList.fetchOptions)
       // quand fetch à finit alors ...
       .then(function (response) {
         return response.json();
       })
 
       .then(function (responseJson) {
-        console.log(responseJson);
+      
         // je récupère le parent du select du menu
         const selectCategories = document.querySelector(
           ".filters__task--category"
@@ -33,7 +33,7 @@ const majTaskList = {
         const selectCategoriesForm = document.querySelector(
           "#selectCategoryForm"
         );
-        console.log(selectCategoriesForm);
+       
         // je crée l'element Html selechttps://benoclock.github.io/S07-todolistt
         const selectForm = document.createElement("select");
         // et je l'integre au DOM

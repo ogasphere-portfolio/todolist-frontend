@@ -17,11 +17,13 @@ const taskList = {
         const config = {
             method: 'GET',
             mode: 'cors',
+            // Veut-on que la réponse puisse être mise en cache par le navigateur ?
+        // Non durant le développement, oui en production.
             cache: 'no-cache'
             
           };
         //TODO faire le fetch
-        fetch('http://localhost:8080/tasks', config)
+        fetch(app.apiRootUrl + "tasks/", config)
             .then(function(response) {return response.json();})
             // Ce résultat au format JS est récupéré en argument ici-même
             .then(function(jsonDataFromAPI) {
@@ -31,53 +33,46 @@ const taskList = {
                     //TODO clone template
                     // je récupère mon template
                     const taskTemplate = document.querySelector('#empty-task');
-                    // on remarque que le DIV que l'on veut dupliquer
-                    // n'est pas directement disponible : #document-fragment
-                    // console.log(taskTemplate);
                     const documentFragment = taskTemplate.content.cloneNode(true);
 
-                    //TODO avec les donnée de l'API, modifier le clone
-                    /* exemple de donnée de l'API
-                    {
-                        "id": 1,
-                        "title": "Passer les tests du chemin vers O'clock",
-                        "completion": 100,
-                        "category": {
-                            "id": 1,
-                            "name": "Chemin vers O'clock",
-                            "status": 1
-                        },
-                        "status": 2
-                        }
-                    */
+                    const idFromAPI = jsonTaskFromAPI.id;
                     const titleFromAPI = jsonTaskFromAPI.title;
-                   // const categoryFromAPI = jsonTaskFromAPI.category.name;
-
+                    const categoryFromAPI = jsonTaskFromAPI.category.name;
+                    const idCategoryFromAPI = jsonTaskFromAPI.category.id;
+                    
                     const titleLabel = documentFragment.querySelector('.task__title-label');
+                   
                     titleLabel.textContent = titleFromAPI;
 
                     const titleInput = documentFragment.querySelector('.task__title-field');
-                    titleInput.textContent = titleFromAPI;
+                    
+                    
                     titleInput.value = titleFromAPI;
 
                     const category = documentFragment.querySelector('.task__category p');
-                    //category.innerText = categoryFromAPI;
-                    // avec dataset, j'accède au attribut commençant par "data-"
-                    // je met le nom du data directement après
                     const divTask = documentFragment.querySelector('.task');
-                   // divTask.dataset.category = categoryFromAPI;
-                    
-                    // ne pas oublier la barre de progression // merci mélanie
+                    divTask.dataset.category = categoryFromAPI;
+                    category.textContent = categoryFromAPI
+                    divTask.dataset.idTask = idFromAPI;
+                    divTask.dataset.idCategorie = idCategoryFromAPI;
+                   
                     const newProgress = jsonTaskFromAPI.completion;
                     const progress = documentFragment.querySelector('.progress-bar__level');
                     progress.setAttribute('style', 'width:' + newProgress + '%');
+
+
+                    if(newProgress.completion == 100){
+                        divTask.classList.remove('task--todo');
+                        divTask.classList.remove('task--edit');
+                        divTask.classList.add('task--complete');
+                    }
 
                     //TODO appendChild du clone
                     const taskList = document.querySelector('.tasks');
                     // attention à ne pas prendre le documentFragment mais bien la DIV
                     taskList.appendChild(divTask);
 
-                    //TODO init des évenèments (task.init)
+                   
                     task.init(divTask);
                 }
             });

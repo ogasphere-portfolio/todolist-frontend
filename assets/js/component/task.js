@@ -44,25 +44,59 @@ const task = {
      * @param {ClickEvent} event infor sur l'event
      */
     handleCompleteTask : function(event){
-        console.log('click');
+
+       
+        console.log("handler Complete Task");
         // je récupère le bouton sur lequel on a cliqué
         const buttonValidate = event.currentTarget;
         //console.log(buttonValidate);
 
         // je dois me posisitionner sur l'element task parent
         const parentElement = buttonValidate.closest('.tasks .task');
-
+        const id = parseInt(parentElement.dataset.idTask);
+console.log(id);
         // je dois enlever la classe todo
         //je dois mettre la classe complete
         // Merci Lucas L, en une seule ligne
         parentElement.classList.replace('task--todo', 'task--complete');
 
-         // Merci Alexandre R pour l'UX
+        // Merci Alexandre R pour l'UX
         // je cherche la barre de progression
         const progressBar = parentElement.querySelector('.progress-bar__level');
         // je change la taille de la barre de progression
         // pour la mettre à 100%, donc complete
         progressBar.style.width="100%";
+
+        const data = {
+            "completion" : 100,
+        };
+
+        const httpHeaders = new Headers();
+        httpHeaders.append("Content-Type", "application/json");
+
+        const fetchOptions = {
+            method: 'PATCH',
+            mode: 'cors',
+            cache: 'no-cache',
+            headers: httpHeaders,
+            body: JSON.stringify(data)
+        };
+
+        fetch(app.apiRootUrl + "tasks/" + id, fetchOptions)
+        .then(
+            function(response) {
+                 console.log(response);
+                // Si HTTP status code à 200 => OK
+                if (response.status == 200) {
+                    alert('modification effectué');
+
+                    // TODO selon ce qu'on veut faire une fois la réponse récupérée
+                }
+                else {
+                    alert('La modification à echoué :'+response.status);
+                }
+            }
+        )
 
     },
 
@@ -73,7 +107,7 @@ const task = {
      * @param {Event} event info event
      */
      handlerClickTitle : function(event){        
-       //console.log("handler Click Title");
+       console.log("handler Click Title");
 
         // je récupère l'élément sur lequel le click a été fait
         const titleElement = event.currentTarget;
