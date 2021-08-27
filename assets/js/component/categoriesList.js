@@ -1,6 +1,6 @@
 const categoriesList = {
     
-    baseUri : "https://benoclock.github.io/S07-todolist/",
+    baseUri : "http://localhost:8080/",
     fetchOptions: {
        
         method: 'GET',
@@ -26,7 +26,7 @@ const categoriesList = {
 
     loadCategoriesFromAPI: function(){
 
-        fetch(categoriesList.baseUri + 'categories.json', categoriesList.fetchOptions)
+        fetch(categoriesList.baseUri + 'categories', categoriesList.fetchOptions)
         // quand fetch à finit alors ...
         .then(function(response){
             

@@ -1,6 +1,6 @@
 const majTaskList = {
  
-    baseUri: "https://benoclock.github.io/S07-todolist/",
+    baseUri: "http://localhost:8080/",
     fetchOptions: {
     method: "GET",
     mode: "cors",
@@ -12,7 +12,7 @@ const majTaskList = {
   },
 
   loadTaskFromAPI: function () {
-    fetch(majTaskList.baseUri + "tasks.json", majTaskList.fetchOptions)
+    fetch(majTaskList.baseUri + "tasks/", majTaskList.fetchOptions)
       // quand fetch à finit alors ...
       .then(function (response) {
         return response.json();
@@ -21,7 +21,7 @@ const majTaskList = {
       .then(function (responseJson) {
         console.log(responseJson);
         // je récupère le parent du select du menu
-       /*  const selectCategories = document.querySelector(
+        const selectCategories = document.querySelector(
           ".filters__task--category"
         );
         // je crée l'element Html select
@@ -34,7 +34,7 @@ const majTaskList = {
           "#selectCategoryForm"
         );
         console.log(selectCategoriesForm);
-        // je crée l'element Html select
+        // je crée l'element Html selechttps://benoclock.github.io/S07-todolistt
         const selectForm = document.createElement("select");
         // et je l'integre au DOM
         selectCategoriesForm.appendChild(selectForm);
@@ -48,7 +48,7 @@ const majTaskList = {
           const optionForm = document.createElement("option");
           optionForm.innerText = category.name;
           selectForm.appendChild(optionForm);
-        } */
+        } 
       });
   },
 };

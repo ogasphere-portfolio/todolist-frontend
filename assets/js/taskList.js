@@ -18,9 +18,10 @@ const taskList = {
             method: 'GET',
             mode: 'cors',
             cache: 'no-cache'
+            
           };
         //TODO faire le fetch
-        fetch('https://benoclock.github.io/S07-todolist/tasks.json', config)
+        fetch('http://localhost:8080/tasks', config)
             .then(function(response) {return response.json();})
             // Ce résultat au format JS est récupéré en argument ici-même
             .then(function(jsonDataFromAPI) {
@@ -50,7 +51,7 @@ const taskList = {
                         }
                     */
                     const titleFromAPI = jsonTaskFromAPI.title;
-                    const categoryFromAPI = jsonTaskFromAPI.category.name;
+                   // const categoryFromAPI = jsonTaskFromAPI.category.name;
 
                     const titleLabel = documentFragment.querySelector('.task__title-label');
                     titleLabel.textContent = titleFromAPI;
@@ -60,11 +61,11 @@ const taskList = {
                     titleInput.value = titleFromAPI;
 
                     const category = documentFragment.querySelector('.task__category p');
-                    category.innerText = categoryFromAPI;
+                    //category.innerText = categoryFromAPI;
                     // avec dataset, j'accède au attribut commençant par "data-"
                     // je met le nom du data directement après
                     const divTask = documentFragment.querySelector('.task');
-                    divTask.dataset.category = categoryFromAPI;
+                   // divTask.dataset.category = categoryFromAPI;
                     
                     // ne pas oublier la barre de progression // merci mélanie
                     const newProgress = jsonTaskFromAPI.completion;

@@ -1,7 +1,7 @@
 const app = {
 
     init: function(){
-        console.log("App Init !");
+        console.log("App Ini!");
         
         // je "créer" une nouvelle taskList
         taskList.init();
