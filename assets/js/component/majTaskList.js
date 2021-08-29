@@ -34,7 +34,7 @@ const majTaskList = {
           "#selectCategoryForm"
         );
        
-        // je crée l'element Html selechttps://benoclock.github.io/S07-todolistt
+        // je crée l'element Html select
         const selectForm = document.createElement("select");
         // et je l'integre au DOM
         selectCategoriesForm.appendChild(selectForm);

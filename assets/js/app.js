@@ -15,7 +15,7 @@ const app = {
          categoriesList.init();
 
         // Je mets à jour la liste des taches
-         majTaskList.init();
+         //majTaskList.init();
 
         filter.init()
 
