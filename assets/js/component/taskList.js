@@ -6,7 +6,9 @@ const taskList = {
         taskList.LoadFromApi();
         // je cherche toutes les task pour créer un "objet" par task
         const allTaskElement = document.querySelectorAll('.tasks .task');
+        console.log(allTaskElement);
         for (const taskElement of allTaskElement) {
+            
             // init correspond à la création de l'objet
             // je lui donne l'élement HTML pour qu'il fasse des recherches ciblées
             task.init(taskElement);
@@ -51,7 +53,8 @@ const taskList = {
                     
                     
                     titleInput.value = titleFromAPI;
-
+                    titleInput.textContent = titleFromAPI;
+                    
                     const category = documentFragment.querySelector('.task__category p');
                     const divTask = documentFragment.querySelector('.task');
                     divTask.dataset.category = categoryFromAPI;
@@ -63,20 +66,20 @@ const taskList = {
                     const progress = documentFragment.querySelector('.progress-bar__level');
                     progress.setAttribute('style', 'width:' + newProgress + '%');
 
-
+                    // todo gerer l'affichage des boutons selon la completion et l'archivage de la tache
                     if(newProgress.completion == 100){
                         divTask.classList.remove('task--todo');
                         divTask.classList.remove('task--edit');
                         divTask.classList.add('task--complete');
                     }
-
-                    //TODO appendChild du clone
+                   
+                    // appendChild du clone
                     const taskList = document.querySelector('.tasks');
                     // attention à ne pas prendre le documentFragment mais bien la DIV
                     taskList.appendChild(divTask);
 
-                   
-                    task.init(divTask);
+                    
+                   task.init(divTask);
                 }
             });
     },

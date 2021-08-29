@@ -17,14 +17,12 @@ const app = {
         // Je mets à jour la liste des taches
          //majTaskList.init();
 
-        filter.init()
+       // filter.init()
 
     },
 
     
 }
-
-
 
 document.addEventListener("DOMContentLoaded", app.init);
 

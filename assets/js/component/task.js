@@ -48,8 +48,14 @@ const task = {
      */
     handleCompleteTask : function(event){
 
-       
-       
+        // je récupère le bouton sur lequel on a cliqué
+        const buttonValidate = event.currentTarget;
+        // je dois me posisitionner sur l'elemtitleLabelset.idTask);
+        
+        // je dois me posisitionner sur l'element task parent
+        const parentElement = buttonValidate.closest('.tasks .task');
+        const id = parseInt(parentElement.dataset.idTask);
+
         const data = {
             "completion" : 100,
         };
@@ -71,14 +77,7 @@ const task = {
                  console.log(response);
                 // Si HTTP status code à 200 => OK
                 if (response.status == 200) {
-                    alert('modification effectué');
-                    // je récupère le bouton sur lequel on a cliqué
-                    const buttonInvalidate = event.currentTarget;
-                
-                    // je dois me posisitionner sur l'element task parent
-                    const parentElement = buttonInvalidate.closest('.tasks .task');
-                    const id = parseInt(parentElement.dataset.idTask);
-
+                   
                     // je dois enlever la classe todo
                     //je dois mettre la classe complete
                     // Merci Lucas L, en une seule ligne
@@ -103,8 +102,13 @@ const task = {
 
     handleIncompleteTask : function(event){
 
-       
-       
+         // je récupère le bouton sur lequel on a cliqué
+         const buttonValidate = event.currentTarget;
+                
+        // je dois me posisitionner sur l'element task parent
+        const parentElement = buttonValidate.closest('.tasks .task');
+        const id = parseInt(parentElement.dataset.idTask);
+
         const data = {
             "completion" : 0,
         };
@@ -126,14 +130,7 @@ const task = {
                  console.log(response);
                 // Si HTTP status code à 200 => OK
                 if (response.status == 200) {
-                    alert('modification effectué');
-                     // je récupère le bouton sur lequel on a cliqué
-                    const buttonValidate = event.currentTarget;
-                
-                    // je dois me posisitionner sur l'element task parent
-                    const parentElement = buttonValidate.closest('.tasks .task');
-                    const id = parseInt(parentElement.dataset.idTask);
-
+                                       
                     // je dois enlever la classe todo
                     //je dois mettre la classe complete
                     // Merci Lucas L, en une seule ligne
@@ -225,32 +222,50 @@ const task = {
         // me permet de récuperer le "frère/soeur" juste avant l'input
         const contentTitleElement = titleInputElement.previousElementSibling;
         
-        // on met dans le texte du paragraphe la valeur de Input
-        contentTitleElement.innerText = titleInputElement.value;
+        
+        const parentElement = contentTitleElement.closest('.tasks .task');
+        const id = parseInt(parentElement.dataset.idTask);
+        console.log(contentTitleElement.textContent);
+     
+         const data = {
+             "title" : contentTitleElement.textContent,
+         };
+ 
+         const httpHeaders = new Headers();
+         httpHeaders.append("Content-Type", "application/json");
+ 
+         const fetchOptions = {
+             method: 'PATCH',
+             mode: 'cors',
+             cache: 'no-cache',
+             headers: httpHeaders,
+             body: JSON.stringify(data)
+         };
+         console.log(fetchOptions.body);
+         fetch(app.apiRootUrl + "tasks/" + id, fetchOptions)
+         .then(
+             function(response) {
+                  console.log(response);
+                 // Si HTTP status code à 200 => OK
+                 if (response.status == 200) {
+                                     
+                    console.log('Modif ok')
+                    // je remet tout comme avant :)
+                    // renvoie l'ancêtre le plus proche de l'élément courant (ou l'élément courant) qui correspond aux sélecteurs passés comme paramètres
+                    const parentElement = titleInputElement.closest('.tasks .task');
+                    // on enlève la classe pour re-passer dans le mode "d'origine"
+                    // on a pas enlever la classe d'origine (ex : task--todo)
+                    parentElement.classList.remove('task--edit');
 
-        // je remet tout comme avant :)
-        // renvoie l'ancêtre le plus proche de l'élément courant (ou l'élément courant) qui correspond aux sélecteurs passés comme paramètres
-        const parentElement = titleInputElement.closest('.tasks .task');
-        // on enlève la classe pour re-passer dans le mode "d'origine"
-        // on a pas enlever la classe d'origine (ex : task--todo)
-        parentElement.classList.remove('task--edit');
+                     
+                 }
+                 else {
+                     alert('La modification à echoué :'+response.status);
+                 }
+             }
+         )
     },
 
-     /*  handleClick: function (event) {
-        event = event || window.event;
-        event.target = event.target || event.srcElement;
-        var element = event.target;
-        //Climb up the document tree from the target of the event
-        while (element) {
-            if (element.nodeName === "BUTTON" && /foo/.test(element.className)) {
-                //The user clicked on a <button> or clicked on an element inside a <button>
-                //with a class name called "foo"
-                doSomething(element);
-                break;
-            }
-            element = element.parentNode;
-        }
-    }, */
 
    
     handleClickTaskCheck: function (event) {
@@ -278,3 +293,21 @@ const task = {
         console.log("changeselect");
     },
 }
+
+
+
+     /*  handleClick: function (event) {
+        event = event || window.event;
+        event.target = event.target || event.srcElement;
+        var element = event.target;
+        //Climb up the document tree from the target of the event
+        while (element) {
+            if (element.nodeName === "BUTTON" && /foo/.test(element.className)) {
+                //The user clicked on a <button> or clicked on an element inside a <button>
+                //with a class name called "foo"
+                doSomething(element);
+                break;
+            }
+            element = element.parentNode;
+        }
+    }, */
