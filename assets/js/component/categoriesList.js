@@ -30,8 +30,6 @@ const categoriesList = {
             const select = document.createElement('select');
             selectCategories.appendChild(select).classList.add('filters__choice');
 
-            
-
             //  select du formulaire
             const selectCategoriesForm = document.querySelector('#selectCategoryForm')
             const selectForm = document.createElement('select');
@@ -45,7 +43,6 @@ const categoriesList = {
                 option.innerText =category.name;
                 option.value = category.id;
                 select.appendChild(option);
-                console.log(category);
                 // on fait pareil pour le select du formulaire
                 const optionForm = document.createElement('option');
                 optionForm.innerText =category.name;

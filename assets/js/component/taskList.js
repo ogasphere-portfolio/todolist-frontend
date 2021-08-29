@@ -12,15 +12,18 @@ const taskList = {
             task.init(taskElement);
         }
     },
-
+    
+   
     LoadFromApi: function () {
+        
         const config = {
             method: 'GET',
             mode: 'cors',
             // Veut-on que la réponse puisse être mise en cache par le navigateur ?
         // Non durant le développement, oui en production.
-            cache: 'no-cache'
-            
+            cache: 'no-cache',
+          
+           
           };
         //TODO faire le fetch
         fetch(app.apiRootUrl + "tasks/", config)

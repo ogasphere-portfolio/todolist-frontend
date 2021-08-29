@@ -39,12 +39,12 @@ const majTaskList = {
         // et je l'integre au DOM
         selectCategoriesForm.appendChild(selectForm);
 
-        // je parcours un tableau d'objet (responseJson.Ratings)
+        // je parcours un tableau d'objet (responseJson.category)
         for (const category of responseJson) {
           // Je crée l'option pour le menu et le formulaire
           const option = document.createElement("option");
           option.innerText = category.name;
-          // je rtitleInput.value = newTitle;ait pareil pour le select du formulaire
+          
           const optionForm = document.createElement("option");
           optionForm.innerText = category.name;
           selectForm.appendChild(optionForm);
@@ -53,30 +53,4 @@ const majTaskList = {
   },
 };
 
-/* const taskTemplate = document.querySelector("#empty-task");
-const documentFragment = taskTemplate.content.cloneNode(true);
 
-const inputTitle = document.querySelector(".task--add .task__title-field");
-const selectCategory = document.querySelector(".task--add .select select");
-
-const newTitle = inputTitle.value;
-
-const newCategory = selectCategory.value;
-
-//TODO je dois inserer les données saisie dans mon nouveau élément
-const titleLabel = documentFragment.querySelector(".task__title-label");
-titleLabel.innerText = newTitle;
-
-const titleInput = documentFragment.querySelector(".task__title-field");
-titleInput.innerText = newTitle;
-titleInput.value = newTitle;
-
-const category = documentFragment.querySelector(".task__category p");
-category.innerText = newCategory;
-
-const divTask = documentFragment.querySelector(".task");
-divTask.dataset.category = newCategory; */
-
-//TODO je dois insérer mon nouvel élémént dans la liste des tasks
-//const taskList = document.querySelector(".tasks");
-//taskList.appendChild(divTask);

@@ -11,13 +11,12 @@ const newTaskForm = {
     },
 
     handleFormSubmit: function (event) {
-       // on est dans une soumission de formulaire, on évite de recharger la page
+        
+        // on est dans une soumission de formulaire, on évite de recharger la page
         // en annulant la soumission
         event.preventDefault();
-        // console.log(event.currentTarget);
-
+        
         // je récupère mon template
-        // document.getElementById('empty-task');
         const taskTemplate = document.querySelector('#empty-task');
 
         // bonne pratique : 
@@ -25,47 +24,41 @@ const newTaskForm = {
         // On vérifie si le navigateur prend en charge
         // l'élément HTML template en vérifiant la présence
         // de l'attribut content pour l'élément template.
+        
         if ("content" in document.createElement("template")) 
         {
-            // on remarque que le DIV que l'on veut dupliquer
-            // n'est pas directement disponible : #document-fragment
-            // console.log(taskTemplate);
-            const documentFragment = taskTemplate.content.cloneNode(true);
-
-            //TODO je dois récupérer les valeur saisies dans mon formumaire
+            // je récupére les valeurs saisies dans mon formumaire
             const inputTitle = document.querySelector('.task--add .task__title-field');
             const selectCategory = document.querySelector('.task--add .select select');
 
             const newTitle = inputTitle.value;
             const idNewCategory = selectCategory.value;
             
-            console.log(idNewCategory);
-            // console.log('title : '+ newTitle + " / category : "+newCategory);
-            //WARNING 
-            //TODO je dois inserer les données saisie dans mon nouveau élément
+            // je crée un clone du template
+            const documentFragment = taskTemplate.content.cloneNode(true);
+            
+            // je récupére les elements Html du template à modifier
             const titleLabel = documentFragment.querySelector('.task__title-label');
-            titleLabel.innerText = newTitle;
-
             const titleInput = documentFragment.querySelector('.task__title-field');
+            const category = documentFragment.querySelector('.task__category p');
+            const divTask = documentFragment.querySelector('.task');
+            
+             //j'insere les données saisies dans mon nouvel élément
+            titleLabel.innerText = newTitle;
             titleInput.innerText = newTitle;
             titleInput.value = newTitle;
-
-            const category = documentFragment.querySelector('.task__category p');
             category.innerText = idNewCategory;
 
-            // avec dataset, j'accède au attribut commençant par "data-"
-            // je met le nom du data directement après
-            const divTask = documentFragment.querySelector('.task');
+            // j'affecte idCategory au dataset
             divTask.dataset.category = idNewCategory;
             
-            // on finit les mises à jours, on vérifie
-            // console.log(divTask);
-
-            //TODO je dois insérer mon nouvel élémént dans la liste des tasks
+            // je récupére la div dans laquelle je dois inserer la nouvelle tache 
+            // attention à ne pas prendre le documentFragment mais bien la DIV           
             const taskListElement = document.querySelector('.tasks');
-            // attention à ne pas prendre le documentFragment mais bien la DIV
-            taskListElement.appendChild(divTask);
+            // j'insérerais mon nouvel élémént : taskListElement.appendChild(divTask);
+            // plus loin seulement si fetch renvoie 201 
             
+            // données à envoyer à l'API pour ajouter la tache
             data = {
                 "title" : newTitle,
                 "completion" : 0,
@@ -73,7 +66,8 @@ const newTaskForm = {
                 "category_id" : idNewCategory ,         
     
             };
-                      
+        
+        // je prépare l'entête pour mon fetch POST
         const httpHeaders = new Headers();
         httpHeaders.append("Content-Type", "application/json");
 
@@ -88,12 +82,13 @@ const newTaskForm = {
         fetch(app.apiRootUrl + "tasks", fetchOptions)
         .then(
             function(response) {
-                // console.log(response);
-                // Si HTTP status code à 201 => OK
                 if (response.status == 201) {
                     alert('ajout effectué');
                 }
                 else {
+                     // j'insére mon nouvel élémént crée avec le template dans la liste des tasks
+                     //todo je pense qu'il faudra modifier ce comportement pour plutot rafraichir la liste à partir de l'API
+                    taskListElement.appendChild(divTask);
                     alert('L\'ajout a échoué '+response.status);
                 }
             }
