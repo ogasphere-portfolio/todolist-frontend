@@ -6,7 +6,7 @@ const app = {
         console.log('app.init');
 
         // je "créer" une nouvelle taskList
-         taskList.init();
+        taskList.init();
 
         // Je crée un nouveau TaskForm
          newTaskForm.init();

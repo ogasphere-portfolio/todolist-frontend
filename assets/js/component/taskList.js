@@ -5,14 +5,7 @@ const taskList = {
 
         taskList.LoadFromApi();
         // je cherche toutes les task pour créer un "objet" par task
-        const allTaskElement = document.querySelectorAll('.tasks .task');
-        console.log(allTaskElement);
-        for (const taskElement of allTaskElement) {
-            
-            // init correspond à la création de l'objet
-            // je lui donne l'élement HTML pour qu'il fasse des recherches ciblées
-            task.init(taskElement);
-        }
+        
     },
     
    
@@ -32,9 +25,9 @@ const taskList = {
             .then(function(response) {return response.json();})
             // Ce résultat au format JS est récupéré en argument ici-même
             .then(function(jsonDataFromAPI) {
-                
+                console.log(jsonDataFromAPI);  
                 for (const jsonTaskFromAPI of jsonDataFromAPI) {
-                        
+                      
                     //TODO clone template
                     // je récupère mon template
                     const taskTemplate = document.querySelector('#empty-task');
@@ -106,5 +99,4 @@ const taskList = {
     },
 };
 
-document.addEventListener("DOMContentLoaded", taskList.init);
 

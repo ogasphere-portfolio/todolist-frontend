@@ -46,7 +46,10 @@ const newTaskForm = {
              //j'insere les données saisies dans mon nouvel élément
             titleLabel.innerText = newTitle;
             titleInput.innerText = newTitle;
-            titleInput.value = newTitle;
+
+            // titleInput.value = newTitle; ne fonctionne pas il faut passer par setAttribute
+            titleInput.setAttribute('value', newTitle);
+            
             category.innerText = idNewCategory;
 
             // j'affecte idCategory au dataset
@@ -83,12 +86,14 @@ const newTaskForm = {
         .then(
             function(response) {
                 if (response.status == 201) {
-                    alert('ajout effectué');
+                    
+                    // j'insére mon nouvel élémént crée avec le template dans la liste des tasks
+                     //todo je pense qu'il faudra modifier ce comportement pour plutot rafraichir la liste à partir de l'API
+                     taskListElement.appendChild(divTask);
+                     alert('ajout effectué');
                 }
                 else {
-                     // j'insére mon nouvel élémént crée avec le template dans la liste des tasks
-                     //todo je pense qu'il faudra modifier ce comportement pour plutot rafraichir la liste à partir de l'API
-                    taskListElement.appendChild(divTask);
+                     
                     alert('L\'ajout a échoué '+response.status);
                 }
             }

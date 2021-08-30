@@ -8,7 +8,7 @@ const task = {
         // je me positionne sur mon élément Task pour faire des recherches
         // uniquement dans les enfants de l'élément
         const titleLabel = taskElement.querySelector(".task__title-label");
-
+        
         // je veux écouter l'évènement click sur le titre (<P>)
         // afin de changer la classe CSS du parent en task--edit
         // comme ça le titre disparait, et l'input apparait
@@ -18,7 +18,7 @@ const task = {
             Gestion event Input titre
         *******************************/
         const titleInput = taskElement.querySelector('.task__title-field');
-        
+       
         // je met un evenement sur un title
         titleInput.addEventListener('keydown', task.handlerKeydownTitleInput);
         // je veux que l'on réagisse aussi sur la perte du focus
@@ -74,7 +74,7 @@ const task = {
         fetch(app.apiRootUrl + "tasks/" + id, fetchOptions)
         .then(
             function(response) {
-                 console.log(response);
+               
                 // Si HTTP status code à 200 => OK
                 if (response.status == 200) {
                    
@@ -198,7 +198,7 @@ const task = {
         if (event.keyCode === 13)
         {
             const titleInputElement = event.currentTarget;
-            
+           
             task.validateNewTitle(titleInputElement);
         }
     },
@@ -208,7 +208,7 @@ const task = {
      */
     handlerInputBlur : function(event) {
         const titleInputElement = event.currentTarget;
-            
+        console.log(titleInputElement);
         task.validateNewTitle(titleInputElement);
     },
     
@@ -221,14 +221,14 @@ const task = {
         // https://developer.mozilla.org/en-US/docs/Web/API/Element/previousElementSibling
         // me permet de récuperer le "frère/soeur" juste avant l'input
         const contentTitleElement = titleInputElement.previousElementSibling;
-        
+        console.log('contentTitleElement'+contentTitleElement);
         
         const parentElement = contentTitleElement.closest('.tasks .task');
         const id = parseInt(parentElement.dataset.idTask);
-        console.log(contentTitleElement.textContent);
-     
+                
+        
          const data = {
-             "title" : contentTitleElement.textContent,
+             "title" : titleInputElement.value,
          };
  
          const httpHeaders = new Headers();

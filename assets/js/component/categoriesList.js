@@ -25,15 +25,39 @@ const categoriesList = {
         .then(function(responseJson){
            
            
+            
+           
+
             //  select du menu
             const selectCategories = document.querySelector('.filters__task--category')
             const select = document.createElement('select');
             selectCategories.appendChild(select).classList.add('filters__choice');
 
+            // Ajout de l'option par défaut : 'Toutes les catégories'
+            const defaultOption = document.createElement('option');
+            defaultOption.textContent = 'Toutes les catégories';
+            // je met une valeur impossible pour faire mes futurs test de validité
+            defaultOption.value = '-1';
+            defaultOption.setAttribute('selected', '')
+            select.appendChild(defaultOption);
+            selectCategories.appendChild(select);
+
+
+
             //  select du formulaire
             const selectCategoriesForm = document.querySelector('#selectCategoryForm')
             const selectForm = document.createElement('select');
             selectCategoriesForm.appendChild(selectForm);
+
+            // Ajout de l'option par défaut : 'Toutes les catégories'
+            const defaultOptionForm = document.createElement('option');
+            defaultOptionForm.textContent = 'Toutes les catégories';
+            // je met une valeur impossible pour faire mes futurs test de validité
+            defaultOptionForm.value = '-1';
+            defaultOptionForm.setAttribute('selected', '')
+            selectForm.appendChild(defaultOptionForm);
+            selectCategoriesForm.appendChild(selectForm);
+
            
 
             // je parcours un tableau d'objet (responseJson.category)
