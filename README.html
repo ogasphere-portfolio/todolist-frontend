@@ -1,0 +1,75 @@
+<h1 id="todolist---saison-7">TodoList - saison 7</h1>
+<p>On veut mettre en place un petit site de gestion de nos tâches.</p>
+<h2 id="description">Description</h2>
+<p>Le nom du projet est <em>TodoList</em>.</p>
+<p>C'est un petit site permettant de gérer ses tâches, quel que soit leur sujet.</p>
+<p>Il ne contient qu'<em>une seule et unique page</em> permettant de réaliser toutes les actions nécessaires.  <br />
+Cette page va lister toutes les tâches déjà saisies, ainsi que leurs catégories respectives. Seules les tâches actives (non archivées) sont affichées par défaut.</p>
+<p>Pour chaque tâche, on pourra :</p>
+<ul>
+<li>modifier son nom</li>
+<li>la marquer comme "complète" (== terminée)</li>
+<li>la marquer comme "incomplète" (== en cours de réalisation)</li>
+<li>l'archiver</li>
+<li>la supprimer (si et seulement si elle est déjà archivée)</li>
+</ul>
+<p>Un formulaire en haut de la liste permettra d'ajouter facilement une nouvelle tâche en renseignant son nom, et la catégorie liée.</p>
+<p>En haut du site, on pourra filtrer la liste des tâches de la façon suivante :</p>
+<ul>
+<li>toutes / complétées / non complétées</li>
+<li>catégorie</li>
+</ul>
+<p>Ces 2 filtres doivent se cumuler et permettre ainsi de lister, par exemple, toutes les tâches complétées d'une catégorie, ou bien les tâches archivées toutes catégories confondues.</p>
+<p>On pourra aussi accéder spécifiquement aux tâches archivées grâce à un lien en haut de page.</p>
+<h3 id="warning-précisions-techniques">⚠️ Précisions techniques</h3>
+<ul>
+<li>chaque action sur le site se fera <strong>sans jamais recharger la page</strong></li>
+<li>le site devra s'adapter à tous les écrans, grâce à la technique <strong><em>Responsive Design</em></strong></li>
+</ul>
+<h2 id="fichiers-techniques">Fichiers techniques</h2>
+<ul>
+<li><a href="docs/user_stories.md">User stories</a></li>
+<li><a href="docs/product_backlog.md">Product backlog</a></li>
+<li><a href="docs/wireframe.png">Wireframe</a></li>
+</ul>
+<h2 id="organisation">Organisation</h2>
+<p>L'organisation est horizontale. Des rôles sont définis.  <br />
+Quel que soit son rôle, « on » ne donne d'ordre à personne.  <br />
+Chacun assume son rôle et s'occupe de sa partie, de ses responsabilités.  <br />
+Chacun communique et se coordonne avec les autres.</p>
+<h3 id="rôle--_product-owner_">Rôle : <em>Product Owner</em></h3>
+<p>Fiche récap : https://kourou.oclock.io/ressources/fiche-recap/scrum/#product-owner</p>
+<p>Adrien seras notre Product Owner (encore et toujours) sur ce projet, on ne change pas une équipe qui gagne.</p>
+<p>Le <em>Product Owner</em> est l'unique rédacteur du <em>Product Backlog</em>.  <br />
+Le <em>Product Owner</em> peut aider les développeurs à clarifier certaines fonctionnalités, répondre aux questions sur le projet.  <br />
+Il est dépositaire de la vision.</p>
+<h3 id="rôle--_scrum-master_">Rôle : <em>Scrum Master</em></h3>
+<p>Fiche récap : https://kourou.oclock.io/ressources/fiche-recap/scrum/#scrum-master</p>
+<p>Le prof de chaque cockpit tiendra le rôle de <em>Scrum Master</em> 🙏</p>
+<p>Le <em>Scrum Master</em> est une aide, un support aux autres membres de l'équipe.  <br />
+Il s'assure que tout le monde suive bien la méthodologie <em>Scrum</em>.  <br />
+Il anime notamment les réunions <em>Daily Scrum</em> et la constitution du <em>Sprint Backlog</em>.</p>
+<h3 id="rôle--_developer_">Rôle : <em>Developer</em></h3>
+<p>Fiche récap : https://kourou.oclock.io/ressources/fiche-recap/scrum/#%c3%a9quipe</p>
+<p>Le prof de chaque cockpit <em>et</em> les étudiants ont le rôle de <em>Developer</em> 💪</p>
+<p>Lors du <em>Sprint Planning</em>, les développeurs sont les seuls à décider quels éléments du <em>Product Backlog</em> sont à intégrer au <em>Sprint Backlog</em>. Pour cela, ils prennent en compte l'importance de chaque élément pour essayer de les réaliser en priorité.  <br />
+Lors du <em>Sprint Planning</em>, les développeurs peuvent utiliser le <em>Planning Poker</em> (<a href="https://kourou.oclock.io/ressources/fiche-recap/scrum/#sprint-planning">fiche récap</a>) pour déterminer l'effort (la difficulté, la complexité) pour chaque élément du <em>Product Backlog</em> (il n'est pas nécessaire de passer sur toutes les user stories).</p>
+<h3 id="sprints">Sprints</h3>
+<p>Chaque <em>Sprint</em> va durer une "saison", soit 8 jours.</p>
+<p>À la fin de chaque <em>Sprint</em> sera livré un <em>Incrément</em> du projet, contenant les fonctionnalités mises en place (issues du <em>Sprint Backlog</em>).</p>
+<blockquote>
+  <p>Dans le cadre de la formation O'clock, on va réaliser un, et un seul, <em>Sprint</em>. Mais c'est déjà l'occasion d'implémenter pas mal de choses !</p>
+</blockquote>
+<h3 id="daily-scrum">Daily Scrum</h3>
+<p>À chaque début de journée, les <em>Developers</em> organisent un <em>Daily Scrum</em> "lite" (léger) afin de savoir :</p>
+<ul>
+<li>ce que chacun a fait la veille</li>
+<li>ce que chacun compte faire aujourd'hui</li>
+<li>si quelque chose nous bloque, quoi exactement</li>
+</ul>
+<h2 id="versions-du-projet">Versions du projet</h2>
+<p>Le logiciel de versionning pour ce projet sera <em>Git</em>.</p>
+<p>Chaque fonctionnalité sera codée dans une branche séparée.  <br />
+Lorsque la fonctionnalité est terminée, une <em>Pull Request</em>, avec 3 à 4 reviewers parmi les <em>Developers</em>, sera créée afin de garantir la qualité du code. Une fois validée, la <em>Pull Request</em> pourra être fusionnée dans la branche <code>master</code>.</p>
+<h2 id="documentation">Documentation</h2>
+<p>La documentation technique devra être rédigée <strong>en anglais</strong>.</p>
