@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>TodoList</title>
+
+    <link rel="stylesheet" href="./assets/css/style.css" />
+   
+    <script
+      src="https://kit.fontawesome.com/b304ee2358.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <section class="section">
+      <div class="container">
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+          <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+              <a class="navbar-item"><h1 class="title is-1">Todo List</h1> </a>
+            </div>
+
+            <div class="navbar-end">
+              <div class="navbar-item">
+                <button class="btn-task-all button is-selected">Toutes</button>
+                <button class="btn-task-copplete button">Complètes</button>
+                <button class="btn-task-none-complete button">Incomplètes</button>
+                <div class="field-body">
+                    <div class="control">
+                      <div class="select">
+                        <select id="select-category-filter">
+                          <option>Toutes les catégories</option>
+                          <option>Courses</option>
+                          <option>O'Clock</option>
+                          <option>Projet professionnel</option>
+                        </select>
+                      </div>
+                    
+                  </div>
+                </div>
+                <button class="btn-archive-list button is-info is-inverted">
+                  Voir les archives
+                </button>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </section>
+    <section class="section form-task-add">
+      <div class="container">
+        <form action="#" method="post" class="task-form border-form">
+          <p
+            class="
+              field
+              is-grouped is-grouped-left
+              control
+              has-icons-left
+              is-expanded
+            "
+          >
+            <input class="task-input" type="text" placeholder="Créer une tache" />
+            <span class="icon is-small is-left">
+              <i class="fas fa-tasks"></i>
+            </span>
+          </p>
+          <div class="field is-grouped is-grouped-right">
+            <div class="field is-narrow">
+              <div class="control">
+                <div class="select" name="category">
+                  <select class="select-category">
+                    <option>Choisir une catégorie</option>
+                    <option>Courses</option>
+                    <option>O'Clock</option>
+                    <option>Projet professionnel</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="control">
+              <button type="submit" class="btn-task-add button is-info">
+                <span class="icon">
+                  <i class="fas fa-plus"></i>
+                </span>
+                <span>Ajouter</span>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+    <ul>
+      <li>
+        <section class="section task-display">
+          <div class="container">
+            <div class="border">
+              <span class="task-name">Acheter du pain</span>
+              <div class="is-right">
+                <button class="btn-task-check button is-link">
+                  <span class="icon is-large">
+                    <i class="fas fa-check-square"></i>
+                  </span>
+                </button>
+                <button class="btn-task-edit button is-link">
+                  <span class="icon is-large">
+                    <i class="fas fa-pen-square"></i>
+                  </span>
+                </button>
+                <button class="btn-task-archive button is-link">
+                  <span class="icon is-large">
+                    <i class="fas fa-archive"></i>
+                  </span>
+                </button>
+              </div>
+            </div>
+
+            <progress class="progress is-primary is-small" value="20" max="100">
+              20%
+            </progress>
+          </div>
+        </section>
+      </li>
+
+      <li>
+        <section class="section task-display">
+          <div class="container">
+            <div class="border">
+              <p class="texte">Réviser les objets en PHP</p>
+              <div class="is-right">
+                <button class="btn-task-check button is-link">
+                  <span class="icon is-large">
+                    <i class="fas fa-check-square"></i>
+                  </span>
+                </button>
+                <button class="btn-task-edit button is-link">
+                  <span class="icon is-large ">
+                    <i claconst app = {
+                      init: function () {
+                          console.log("app.init");
+                  
+                  
+                  
+                          /* if (document.addEventListener) {
+                              document.addEventListener("click", handleClick, false);
+                          } else if (document.attachEvent) {
+                              document.attachEvent("onclick", handleClick);
+                          } */
+                  
+                          // handle Form submit
+                          const taskAdd = document.querySelector(".task-form");
+                          taskAdd.addEventListener("submit", app.handleFormSubmit);
+                  
+                          
+                  
+                          // Handle buttons click
+                  
+                          var taskCheck = document.querySelector(".btn-task-check");
+                          taskCheck.addEventListener("click", app.handleClickTaskCheck);
+                          const taskEdit = document.querySelector(".btn-task-edit");
+                          taskEdit.addEventListener("click", app.handleClickTaskEdit);
+                          const taskUnCheck = document.querySelector(".btn-task-uncheck");
+                          taskUnCheck.addEventListener("click", app.handleClickTaskUnCheck);
+                          const taskDelete = document.querySelector(".btn-task-delete");
+                          taskDelete.addEventListener("click", app.handleClickTaskDelete);
+                          const taskArchive = document.querySelector(".btn-task-archive");
+                          taskArchive.addEventListener("click", app.handleClickTaskArchive);
+                          const taskArchiveOff = document.querySelector(".btn-task-archive-off");
+                          taskArchiveOff.addEventListener("click", app.handleClickTaskArchiveOff);
+                  
+                          // Handle select Category filter change
+                          const selectCategoryFilter = document.querySelector(
+                              "#select-category-filter"
+                          );
+                          selectCategoryFilter.addEventListener(
+                              "change",
+                              app.handleChangeCategoryFilter
+                          );
+                      },
+                  
+                     /*  handleClick: function (event) {
+                          event = event || window.event;
+                          event.target = event.target || event.srcElement;
+                  
+                          var element = event.target;
+                  
+                          //Climb up the document tree from the target of the event
+                          while (element) {
+                              if (element.nodeName === "BUTTON" && /foo/.test(element.className)) {
+                                  //The user clicked on a <button> or clicked on an element inside a <button>
+                                  //with a class name called "foo"
+                                  doSomething(element);
+                                  break;
+                              }
+                  
+                              element = element.parentNode;
+                          }
+                      }, */
+                  
+                      handleFormSubmit: function (event) {
+                          event.preventDefault();
+                  
+                          // Target Input
+                          const inputElement = event.currentTarget.querySelector("input");
+                          
+                          
+                          // Get Input Value
+                          const inputValue = inputElement.value;
+                  
+                         
+                          console.log(inputValue);
+                      },
+                  
+                      handleClickTaskCheck: function (event) {
+                          console.log("check");
+                      },
+                      handleClickTaskEdit: function (event) {
+                          console.log("edit");
+                      },
+                      handleClickTaskUnCheck: function (event) {
+                          console.log("uncheck");
+                      },
+                      handleClickTaskDelete: function (event) {
+                          console.log("delete");
+                      },
+                      handleClickTaskArchive: function (event) {
+                          console.log("archive");
+                      },
+                      handleClickTaskArchiveOff: function (event) {
+                          console.log("archive decochée");
+                      },
+                  
+                      handleChangeCategoryFilter: function (event) {
+                          console.log("changeselect");
+                      },
+                  };
+                  
+                  // On lance la fonction init uniquement quand le DOM aura terminé de se lancer
+                  document.addEventListener("DOMContentLoaded", app.init);ss="fas fa-pen-square "></i>
+                  </span>
+                </button>
+                <button class="btn-task-archive button is-link">
+                  <span class="icon is-large">
+                    <i clconst app = {
+                      init: function () {
+                          console.log("app.init");
+                  
+                  
+                  
+                          /* if (document.addEventListener) {
+                              document.addEventListener("click", handleClick, false);
+                          } else if (document.attachEvent) {
+                              document.attachEvent("onclick", handleClick);
+                          } */
+                  
+                          // handle Form submit
+                          const taskAdd = document.querySelector(".task-form");
+                          taskAdd.addEventListener("submit", app.handleFormSubmit);
+                  
+                          
+                  
+                          // Handle buttons click
+                  
+                          var taskCheck = document.querySelector(".btn-task-check");
+                          taskCheck.addEventListener("click", app.handleClickTaskCheck);
+                          const taskEdit = document.querySelector(".btn-task-edit");
+                          taskEdit.addEventListener("click", app.handleClickTaskEdit);
+                          const taskUnCheck = document.querySelector(".btn-task-uncheck");
+                          taskUnCheck.addEventListener("click", app.handleClickTaskUnCheck);
+                          const taskDelete = document.querySelector(".btn-task-delete");
+                          taskDelete.addEventListener("click", app.handleClickTaskDelete);
+                          const taskArchive = document.querySelector(".btn-task-archive");
+                          taskArchive.addEventListener("click", app.handleClickTaskArchive);
+                          const taskArchiveOff = document.querySelector(".btn-task-archive-off");
+                          taskArchiveOff.addEventListener("click", app.handleClickTaskArchiveOff);
+                  
+                          // Handle select Category filter change
+                          const selectCategoryFilter = document.querySelector(
+                              "#select-category-filter"
+                          );
+                          selectCategoryFilter.addEventListener(
+                              "change",
+                              app.handleChangeCategoryFilter
+                          );
+                      },
+                  
+                     /*  handleClick: function (event) {
+                          event = event || window.event;
+                          event.target = event.target || event.srcElement;
+                  
+                          var element = event.target;
+                  
+                          //Climb up the document tree from the target of the event
+                          while (element) {
+                              if (element.nodeName === "BUTTON" && /foo/.test(element.className)) {
+                                  //The user clicked on a <button> or clicked on an element inside a <button>
+                                  //with a class name called "foo"
+                                  doSomething(element);
+                                  break;
+                              }
+                  
+                              element = element.parentNode;
+                          }
+                      }, */
+                  
+                      handleFormSubmit: function (event) {
+                          event.preventDefault();
+                  
+                          // Target Input
+                          const inputElement = event.currentTarget.querySelector("input");
+                          
+                          
+                          // Get Input Value
+                          const inputValue = inputElement.value;
+                  
+                         
+                          console.log(inputValue);
+                      },
+                  
+                      handleClickTaskCheck: function (event) {
+                          console.log("check");
+                      },
+                      handleClickTaskEdit: function (event) {
+                          console.log("edit");
+                      },
+                      handleClickTaskUnCheck: function (event) {
+                          console.log("uncheck");
+                      },
+                      handleClickTaskDelete: function (event) {
+                          console.log("delete");
+                      },
+                      handleClickTaskArchive: function (event) {
+                          console.log("archive");
+                      },
+                      handleClickTaskArchiveOff: function (event) {
+                          console.log("archive decochée");
+                      },
+                  
+                      handleChangeCategoryFilter: function (event) {
+                          console.log("changeselect");
+                      },
+                  };
+                  
+                  // On lance la fonction init uniquement quand le DOM aura terminé de se lancer
+                  document.addEventListener("DOMContentLoaded", app.init);ss="fas fa-archive"></i>
+                  </span>
+                </button>
+                
+              </div>
+              
+            </div>
+            <progress class="progress is-primary is-small" value="30" max="100">
+              30%
+            </progress>
+          </div>
+        </section>
+      </li>
+      <li>
+        <section class="section task-display">
+          <div class="container">
+            <div class="border">
+              <p class="texte">Revoir les événements en JS</p>
+              <div class="is-right">
+                <button class="btn-task-uncheck button is-link">
+                  <span class="icon is-large">
+                    <i class="fas fa-step-backward"></i>
+                  </span>
+                </button>
+                <button class="btn-task-edit button is-link">
+                  <span class="icon is-large">
+                    <i class="fas fa-pen-square"></i>
+                  </span>
+                </button>
+                <button class="btn-task-archive button is-link">
+                  <span class="icon is-large">
+                    <i class="fas fa-archive"></i>
+                  </span>
+                </button>
+              </div>
+            </div>
+            <progress class="progress is-primary is-small" value="60" max="100">
+              60%
+            </progress>
+          </div>
+        </section>
+      </li>
+      <li>
+        <section class="section task-display">
+          <div class="container">
+            <div class="border">
+              <div class="is-left">
+                <div class="texte archived">Apprendre à apprendre</div>
+              </div>
+              <div class="is-right">
+                <button class="btn-task-check button is-link">
+                  <span class="icon is-large">
+                    <i class="fas fa-check-square"></i>
+                  </span>
+                </button>
+                <button class="button is-link">
+                  <span class="icon is-large ">
+                    <i class="fas fa-pen-square"></i>
+                  </span>
+                </button>
+                <button class="btn-task-archive button is-link">
+                  <span class="icon is-large ">
+                    <i class="fas fa-archive"></i>
+                  </span>
+                </button>
+              </div>
+            </div>
+            <progress class="progress is-primary is-small" value="10" max="100">
+              10%
+            </progress>
+          </div>
+        </section>
+      </li>
+      <li>
+        <section class="section task-archive">
+          <div class="container">
+            <div class="border">
+              <p class="texte">Exemple de tâche archivée</p>
+              <div class="is-right">
+                <button class="btn-task-archive-off button is-link">
+                  <span class="icon is-large">
+                    <i class="fas fa-reply"></i>
+                  </span>
+                </button>
+                <button class="btn-task-delete button is-link">
+                  <span class="icon is-large">
+                    <i class="fas fa-trash-alt"></i>
+                  </span>
+                </button>
+              </div>
+            </div>
+            <progress class="progress is-primary is-small" value="40" max="100">
+              40%
+            </progress>
+          </div>
+        </section>
+      </li>
+    </ul>
+
+    <script type="text/javascript" src="./assets/js/app.js"></script>
+  </body>
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p>
+        <strong>TodoList</strong> by
+        <a href="https://500px.com/p/alcoream?view=photos">Olivier GANDAIS</a>
+      </p>
+    </div>
+  </footer>
+</html>

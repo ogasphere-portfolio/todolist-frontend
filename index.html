@@ -1,90 +1,49 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>TodoList</title>
 
-    <link rel="stylesheet" href="./assets/css/style.css" />
-   
-    <script
-      src="https://kit.fontawesome.com/b304ee2358.js"
-      crossorigin="anonymous"
-    ></script>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TodoList</title>
+  <script src="https://kit.fontawesome.com/b304ee2358.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
 
-  <body>
-    <section class="section">
-      <div class="container">
-        <nav class="navbar" role="navigation" aria-label="main navigation">
-          <div id="navbarBasicExample" class="navbar-menu">
-            <div class="navbar-start">
-              <a class="navbar-item"><h1 class="title is-1">Todo List</h1> </a>
-            </div>
-
-            <div class="navbar-end">
-              <div class="navbar-item">
-                <button class="btn-task-all button is-selected">Toutes</button>
-                <button class="btn-task-copplete button">Complètes</button>
-                <button class="btn-task-none-complete button">Incomplètes</button>
-                <div class="field-body">
-                    <div class="control">
-                      <div class="select">
-                        <select id="select-category-filter">
-                          <option>Toutes les catégories</option>
-                          <option>Courses</option>
-                          <option>O'Clock</option>
-                          <option>Projet professionnel</option>
-                        </select>
-                      </div>
-                    
-                  </div>
-                </div>
-                <button class="btn-archive-list button is-info is-inverted">
-                  Voir les archives
-                </button>
-              </div>
-            </div>
-          </div>
-        </nav>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="logo">
+        <a href=".">
+          <h1 class="logo__title title is-3">TodoList</h1>
+        </a>
       </div>
-    </section>
-    <section class="section form-task-add">
-      <div class="container">
-        <form action="#" method="post" class="task-form border-form">
-          <p
-            class="
-              field
-              is-grouped is-grouped-left
-              control
-              has-icons-left
-              is-expanded
-            "
-          >
-            <input class="task-input" type="text" placeholder="Créer une tache" />
-            <span class="icon is-small is-left">
-              <i class="fas fa-tasks"></i>
-            </span>
-          </p>
-          <div class="field is-grouped is-grouped-right">
-            <div class="field is-narrow">
-              <div class="control">
-                <div class="select" name="category">
-                  <select class="select-category">
-                    <option>Choisir une catégorie</option>
-                    <option>Courses</option>
-                    <option>O'Clock</option>
-                    <option>Projet professionnel</option>
-                  </select>
-                </div>
-              </div>
+      <div class="filters">
+        <div class="filters__task filters__task--completion buttons are-small has-addons">
+          <button class="filters__choice button is-info is-selected">Toutes</button>
+          <button class="filters__choice button">Complètes</button>
+          <button class="filters__choice button">Incomplètes</button>
+        </div>
+        <div class="filters__task filters__task--category select is-small"></div>
+        <div class="filters__task filters__task--archived">
+          <a class="filters__choice" href="#">Voir les archives</a>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div class="task task--add">
+        <form method="POST">
+          <div class="task__content">
+            <div class="task__title">
+              <p class="task__title-label"></p>
+              <input class="task__title-field input" type="text" placeholder="Titre de la tâche" name="title" />
             </div>
-
-            <div class="control">
-              <button type="submit" class="btn-task-add button is-info">
-                <span class="icon">
-                  <i class="fas fa-plus"></i>
+            <div class="task__category">
+              <div class="select is-small" id="selectCategoryForm"></div>
+            </div>
+            <div class="task__buttons">
+              <button class="task__button task__button--add button is-info">
+                <span class="icon is-small">
+                  <i class="fa fa-plus"></i>
                 </span>
                 <span>Ajouter</span>
               </button>
@@ -92,164 +51,75 @@
           </div>
         </form>
       </div>
-    </section>
-    <ul>
-      <li>
-        <section class="section task-display">
-          <div class="container">
-            <div class="border">
-              <span class="task-name">Acheter du pain</span>
-              <div class="is-right">
-                <button class="btn-task-check button is-link">
-                  <span class="icon is-large">
-                    <i class="fas fa-check-square"></i>
-                  </span>
-                </button>
-                <button class="btn-task-edit button is-link">
-                  <span class="icon is-large">
-                    <i class="fas fa-pen-square"></i>
-                  </span>
-                </button>
-                <button class="btn-task-archive button is-link">
-                  <span class="icon is-large">
-                    <i class="fas fa-archive"></i>
-                  </span>
-                </button>
-              </div>
-            </div>
-
-            <progress class="progress is-primary is-small" value="20" max="100">
-              20%
-            </progress>
-          </div>
-        </section>
-      </li>
-
-      <li>
-        <section class="section task-display">
-          <div class="container">
-            <div class="border">
-              <p class="texte">Réviser les objets en PHP</p>
-              <div class="is-right">
-                <button class="btn-task-check button is-link">
-                  <span class="icon is-large">
-                    <i class="fas fa-check-square"></i>
-                  </span>
-                </button>
-                <button class="btn-task-edit button is-link">
-                  <span class="icon is-large ">
-                    <i class="fas fa-pen-square "></i>
-                  </span>
-                </button>
-                <button class="btn-task-archive button is-link">
-                  <span class="icon is-large">
-                    <i class="fas fa-archive"></i>
-                  </span>
-                </button>
-                
-              </div>
-              
-            </div>
-            <progress class="progress is-primary is-small" value="30" max="100">
-              30%
-            </progress>
-          </div>
-        </section>
-      </li>
-      <li>
-        <section class="section task-display">
-          <div class="container">
-            <div class="border">
-              <p class="texte">Revoir les événements en JS</p>
-              <div class="is-right">
-                <button class="btn-task-uncheck button is-link">
-                  <span class="icon is-large">
-                    <i class="fas fa-step-backward"></i>
-                  </span>
-                </button>
-                <button class="btn-task-edit button is-link">
-                  <span class="icon is-large">
-                    <i class="fas fa-pen-square"></i>
-                  </span>
-                </button>
-                <button class="btn-task-archive button is-link">
-                  <span class="icon is-large">
-                    <i class="fas fa-archive"></i>
-                  </span>
-                </button>
-              </div>
-            </div>
-            <progress class="progress is-primary is-small" value="60" max="100">
-              60%
-            </progress>
-          </div>
-        </section>
-      </li>
-      <li>
-        <section class="section task-display">
-          <div class="container">
-            <div class="border">
-              <div class="is-left">
-                <div class="texte archived">Apprendre à apprendre</div>
-              </div>
-              <div class="is-right">
-                <button class="btn-task-check button is-link">
-                  <span class="icon is-large">
-                    <i class="fas fa-check-square"></i>
-                  </span>
-                </button>
-                <button class="button is-link">
-                  <span class="icon is-large ">
-                    <i class="fas fa-pen-square"></i>
-                  </span>
-                </button>
-                <button class="btn-task-archive button is-link">
-                  <span class="icon is-large ">
-                    <i class="fas fa-archive"></i>
-                  </span>
-                </button>
-              </div>
-            </div>
-            <progress class="progress is-primary is-small" value="10" max="100">
-              10%
-            </progress>
-          </div>
-        </section>
-      </li>
-      <li>
-        <section class="section task-archive">
-          <div class="container">
-            <div class="border">
-              <p class="texte">Exemple de tâche archivée</p>
-              <div class="is-right">
-                <button class="btn-task-archive-off button is-link">
-                  <span class="icon is-large">
-                    <i class="fas fa-reply"></i>
-                  </span>
-                </button>
-                <button class="btn-task-delete button is-link">
-                  <span class="icon is-large">
-                    <i class="fas fa-trash-alt"></i>
-                  </span>
-                </button>
-              </div>
-            </div>
-            <progress class="progress is-primary is-small" value="40" max="100">
-              40%
-            </progress>
-          </div>
-        </section>
-      </li>
-    </ul>
-
-    <script type="text/javascript" src="./assets/js/app.js"></script>
-  </body>
-  <footer class="footer">
-    <div class="content has-text-centered">
-      <p>
-        <strong>TodoList</strong> by
-        <a href="https://500px.com/p/alcoream?view=photos">Olivier GANDAIS</a>
-      </p>
+      <div class="tasks">
+        <!-- Emplacement pour le resultat des templates -->
+      </div>
+    </main>
+  </div>
+  <template id="empty-task">
+    <div class="task task--todo" data-category="Courses">
+      <div class="task__content">
+        <div class="task__title">
+          <p class="task__title-label">TITLE A MODIFIER</p>
+          <input class="task__title-field input" type="text" value="TITLE A MODIFIER" placeholder="Titre de la tâche"
+            name="title" />
+        </div>
+        <div class="task__category">
+          <p>Category a modifier</p>
+        </div>
+        <div class="task__buttons">
+          <button class="task__button task__button--incomplete button is-success is-small">
+            <span class="icon is-small">
+              <i class="fa fa-step-backward"></i>
+            </span>
+          </button>
+          <button class="task__button task__button--desarchive button is-success is-small">
+            <span class="icon is-small">
+              <i class="fa fa-undo"></i>
+            </span>
+          </button>
+          <button class="task__button task__button--validate button is-success is-small">
+            <span class="icon is-small">
+              <i class="fa fa-check-square-o"></i>
+            </span>
+          </button>
+          <button class="task__button task__button--modify button is-warning is-small">
+            <span class="icon is-small">
+              <i class="fa fa-pencil-square-o"></i>
+            </span>
+          </button>
+          <button class="task__button task__button--archive button is-danger is-small">
+            <span class="icon is-small">
+              <i class="fa fa-archive"></i>
+            </span>
+          </button>
+          <button class="task__button task__button--delete button is-danger is-small">
+            <span class="icon is-small">
+              <i class="fa fa-trash"></i>
+            </span>
+          </button>
+        </div>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-bar__level" style="width: 0%"></div>
+      </div>
     </div>
-  </footer>
+  </template>
+  <script type="text/javascript" src="assets/js/app.js"></script>
+  <script type="text/javascript" src="assets/js/component/taskList.js"></script>
+  <script type="text/javascript" src="assets/js/component/newTaskForm.js"></script>
+  <script type="text/javascript" src="assets/js/component/task.js"></script>
+  <script type="text/javascript" src="assets/js/component/categoriesList.js"></script>
+  
+
+</body>
+<footer class="footer">
+  <div class="content has-text-centered">
+    <p>
+      <strong>TodoList</strong> by
+      <a href="https://500px.com/p/alcoream?view=photos">Olivier GANDAIS</a>
+    </p>
+  </div>
+</footer>
+
 </html>
