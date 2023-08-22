@@ -34,6 +34,22 @@ const task = {
         const buttonInvalidate = taskElement.querySelector('.task__button--incomplete');
         buttonInvalidate.addEventListener('click', task.handleIncompleteTask);
 
+        // -------------------------------------------------------------------
+        // Ecoute de l'évènement permettant d'archiver une tâche
+        // -------------------------------------------------------------------
+        // On récupère le bouton permettant de marque une tâche comme incomplète
+        const taskArchiveButtonElement = taskElement.querySelector('.task__button--archive');
+        // On ajoute l'écoute du clic sur ce bouton
+        taskArchiveButtonElement.addEventListener('click', task.handleArchiveTask);
+
+        // -------------------------------------------------------------------
+        // Ecoute de l'évènement permettant de supprimer une tâche
+        // -------------------------------------------------------------------
+        // On récupère le bouton permettant de supprimer une tâche ==
+        const taskDeleteButtonElement = taskElement.querySelector('.task__button--delete');
+        // On ajoute l'écoute du clic sur ce bouton
+        taskDeleteButtonElement.addEventListener('click', task.handleDeleteTask);
+
     },
 
 
@@ -282,8 +298,63 @@ const task = {
     handleClickTaskDelete: function (event) {
         console.log("delete");
     },
-    handleClickTaskArchive: function (event) {
+    handleArchiveTask: function (evt) {
         console.log("archive");
+        // -------------------------------------------------------------------
+        // Récupération des informations nécessaires en prévisions de la mise
+        // à jour de la tâche
+        // -------------------------------------------------------------------
+
+        // Récupération du bouton à l'origine de l'évènement
+        const taskArchiveButtonElement = evt.currentTarget;
+        // Recherche de la tâche correspondante
+        const taskElement = taskArchiveButtonElement.closest('.task');
+        // Récupération de l'id de la tâche
+        const taskId = taskElement.dataset.id;
+
+        // -------------------------------------------------------------------
+        // Mise à jour de la complétion de la tâche en BDD via appel à l'API
+        // -------------------------------------------------------------------
+
+        // On stocke les données à transférer
+        const taskData = {
+            status: 2
+        };
+        
+        // On prépare les entêtes HTTP (headers) de la requête
+        // afin de spécifier que les données sont en JSON
+        const httpHeaders = new Headers();
+        httpHeaders.append("Content-Type", "application/json");
+        
+        // On consomme l'API pour ajouter en DB
+        const fetchOptions = {
+            method: 'PATCH',
+            mode: 'cors',
+            cache: 'no-cache',
+            // On ajoute les headers dans les options
+            headers: httpHeaders,
+            // On ajoute les données, encodées en JSON, dans le corps de la requête
+            body: JSON.stringify(taskData)
+        };
+        
+        // Exécuter la requête HTTP avec FETCH
+        fetch(app.apiRootUrl + 'tasks/' + taskId, fetchOptions)
+        .then(
+            function(response) {
+                 console.log(response);
+
+                // Si HTTP status code à 204 => (No Content)
+                if (response.status == 204) {
+                    console.log('La mise à jour en bdd a été effectuée');
+        
+                    // Modification de la complétion de la tâche dans le DOM
+                    task.updateTaskStatus(taskElement, 2);
+                }
+                else {
+                    alert('La mise à jour a échoué');
+                }
+            }
+        )
     },
     handleClickTaskArchiveOff: function (event) {
         console.log("archive decochée");

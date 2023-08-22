@@ -1,6 +1,6 @@
 const app = {
 
-    apiRootUrl: 'http://localhost:8080/',
+    apiRootUrl: 'https://mon-portfolio.test/Projets/todolist-backend/public/',
 
     init:  function(){
         console.log('app.init');
